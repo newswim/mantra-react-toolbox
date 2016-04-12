@@ -1,0 +1,50 @@
+{
+  "name": "arrow-react-toolbox",
+  "private": "true",
+  "version": "0.1.0",
+  "description": "arrow-react-toolbox",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "meteor run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/username/reponame.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "eslint": "1.10.x",
+    "eslint-plugin-react": "3.15.x",
+    "invariant": "2.2.1",
+    "lodash": "4.10.0",
+    "mantra-core": "^1.5.0",
+    "meteor-node-stubs": "~0.2.0",
+    "normalize.css": "4.1.1",
+    "react": "^15.0.0",
+    "react-addons-css-transition-group": "15.0.1",
+    "react-dom": "^15.0.0",
+    "react-komposer": "^1.8.0",
+    "react-mounter": "^1.2.0",
+    "react-simple-di": "^1.2.0",
+    "react-toolbox": "^0.16.2"
+  },
+  "cssModules": {
+    "extensions": [
+      "scss"
+    ],
+    "globalVariables": [
+      "node_modules/react-toolbox/lib/_colors.scss",
+      {
+        "theme-building": true
+      },
+      "client/toolbox-theme.scss"
+    ],
+    "outputJsFilePath": {
+      ".*node_modules/.*": "{dirname}/{basename}.js"
+    },
+    "explicitIncludes": [
+      "node_modules/react-toolbox"
+    ]
+  }
+}
