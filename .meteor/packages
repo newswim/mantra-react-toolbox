@@ -26,6 +26,7 @@ babel-compiler          # Note: might be removed when 'class transform' issue re
 audit-argument-checks
 check
 random
+accounts-base
 accounts-password
 
 fortawesome:fontawesome

@@ -1,13 +1,14 @@
 import React from 'react';
+import { ListItem } from 'react-toolbox/lib/list'
 
-class Product extends React.Component {
-  render() {
+const Product = ({product}) => {
     return (
-      <div>
-        Product
-      </div>
-    );
-  }
+      <ListItem key={product._id}
+        caption={product.name}
+        legend={product.description}
+
+        />
+    )
 }
 
 export default Product;
