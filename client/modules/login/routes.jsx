@@ -1,7 +1,7 @@
 import React from 'react';
 import {mount} from 'react-mounter';
 
-import MainLayout from '/client/modules/core/components/main_layout.jsx'
+import MainLayout from './components/layout.jsx'
 
 import InputLogin from './containers/input_login.js'
 

@@ -5,16 +5,18 @@ import MainLayout from '/client/modules/core/components/main_layout.jsx'
 import AltLayout from '/client/modules/core/containers/alt_layout.js'
 import Home from './components/home.jsx'
 import ProductList from './containers/product_list.js'
-import { Quotes } from './components/quotes.jsx'
+
 
 export default function (injectDeps, {FlowRouter}) {
   const MainLayoutCtx = injectDeps(MainLayout);
   const AltLayoutCtx = injectDeps(AltLayout);
 
-
   FlowRouter.route('/', {
     name: 'main',
     action() {
+      // if (!Meteor.userId()) {
+      //     FlowRouter.go('/login');
+      // }
       mount(MainLayoutCtx, {
         content: () => (<Home />)
       });
@@ -30,20 +32,11 @@ export default function (injectDeps, {FlowRouter}) {
     }
   });
 
-  FlowRouter.route('/quotes', {
-    name: 'quotes',
-    action() {
-      mount(MainLayoutCtx, {
-        content: () => (<Quotes />)
-      });
-    }
-  });
-
   FlowRouter.route('/alt', {
     name: 'alt',
     action() {
       mount(AltLayoutCtx, {
-        content: () => (<Quotes />)
+        content: () => (<ProductList />)
       });
     }
   });

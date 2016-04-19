@@ -1,7 +1,7 @@
 export default {
-  create({Meteor, LocalState, FlowRouter}, email, password) {
-    if (!email) {
-      return LocalState.set('CREATE_USER_ERROR', 'Email is required.');
+  create({Meteor, LocalState, FlowRouter}, username, password) {
+    if (!username) {
+      return LocalState.set('CREATE_USER_ERROR', 'Username is required.');
     }
 
     if (!password) {
@@ -10,22 +10,19 @@ export default {
 
     LocalState.set('CREATE_USER_ERROR', null);
 
-    Accounts.createUser({email, password});
+    Accounts.createUser({username, password});
     FlowRouter.go('/');
   },
 
-  login({Meteor, LocalState, FlowRouter}, email, password) {
-    if (!email) {
-      return LocalState.set('LOGIN_ERROR', 'Email is required.');
-    }
-
-    if (!password) {
-      return LocalState.set('LOGIN_ERROR', 'Password is required.');
-    }
+  login({Meteor, LocalState, FlowRouter}, username, password) {
+    if (!username)
+      return LocalState.set('LOGIN_ERROR', 'Username is required.')
+    if (!password)
+      return LocalState.set('LOGIN_ERROR', 'Password is required.')
 
     LocalState.set('LOGIN_ERROR', null);
 
-    Meteor.loginWithPassword(email, password);
+    Meteor.loginWithPassword(username, password);
     FlowRouter.go('/');
   },
 

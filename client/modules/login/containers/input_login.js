@@ -5,6 +5,10 @@ import { InputLogin } from '../components/input_login.jsx';
 export const composer = ({context}, onData) => {
   const {LocalState} = context();
 
+  if (!LocalState.get('LOGIN_ERROR')) {
+    LocalState.set('LOGIN_ERROR', '')
+  }
+
   if (!LocalState.get('USER_INPUT_VALUE')) {
     LocalState.set('USER_INPUT_VALUE', '')
   }
@@ -17,7 +21,7 @@ export const composer = ({context}, onData) => {
 
 export const depsMapper = (context, actions) => ({
   context: () => context,
-  login: actions.users.login,
+  loginUser: actions.users.login,
   inputValue: actions.users.inputValue
 });
 
