@@ -3,14 +3,12 @@ import styles from './input_login.mss'
 import Input  from 'react-toolbox/lib/input';
 import { BaseComponent } from '/client/modules/react_utils'
 
-export class InputLogin extends BaseComponent {
+export class CreateUser extends BaseComponent {
   constructor () {
     super()
     this.bindHandlers(
       'handleChange',
-      'handleLogin',
-      'handleLogout',
-      'handleCreate'
+      'handleSubmit'
     )
 
   }
@@ -21,7 +19,7 @@ export class InputLogin extends BaseComponent {
         <div className={styles.headWrap}>
 
           <h3 className={styles.fw100}>Welcome to Arrow.</h3>
-          <h4 className={styles.fw100}>please login to continue</h4>
+          <h4 className={styles.fw100}>please create a new account!</h4>
 
         </div>
         <div className={styles.loginCard}>
@@ -40,14 +38,9 @@ export class InputLogin extends BaseComponent {
             label='Password'
             ref='password'
           />
-          <div className={styles.loginButton} onClick={this.handleLogin}><h5>Login</h5></div>
+        <div className={styles.loginButton} onClick={this.handleSubmit}><h5>Create</h5></div>
         </div>
         {error ? <p style={{color: 'red'}}>{error}</p> : null}
-        <div className={styles.buttonWrap}>
-          <span onClick={this.handleCreate}>Create account</span><span> | </span>
-          <span onClick={this.handleLogout}>Forget password?</span>
-        </div>
-
       </div>
     )
   }
@@ -56,7 +49,7 @@ export class InputLogin extends BaseComponent {
     if (event && event.preventDefault) {
       event.preventDefault();
     }
-    console.log(`from handler: ${event}`)
+    // console.log(`from: event handler, ${event}`)
 
     let thingTyped = event
 
@@ -65,25 +58,14 @@ export class InputLogin extends BaseComponent {
     inputValue(thingTyped)
   }
 
-  handleLogin() {
+  handleSubmit() {
     const password = this.refs.password.refs.input.value
     const username = this.refs.username.refs.input.value
-    const { loginUser } = this.props
+    let { create } = this.props
 
-    console.log("logging in, ${username}")
+    console.log(`creating user, ${username}`)
 
-    loginUser(username, password)
+    create(username, password)
 
-  }
-
-  handleLogout() {
-    const { logout } = this.props
-    logout()
-  }
-
-  handleCreate() {
-    debugger;
-    const { goCreate } = this.props
-    goCreate()
   }
 }

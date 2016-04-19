@@ -11,6 +11,7 @@ export const depsMapper = (context, actions) => ({
   _goProducts: actions.menu._goProducts,
   _goHome: actions.menu._goHome,
   _goQuotes: actions.menu._goQuotes,
+  _handleLogout: actions.menu._handleLogout,
   context: () => context
 });
 

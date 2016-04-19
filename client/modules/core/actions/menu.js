@@ -7,5 +7,9 @@ export default {
   },
   _goQuotes({Meteor, LocalState, FlowRouter}) {
     FlowRouter.go('/quotes')
+  },
+  _handleLogout({Meteor, LocalState, FlowRouter}) {
+    Meteor.logout()
+    FlowRouter.go('/login')
   }
 }

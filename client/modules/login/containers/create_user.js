@@ -1,35 +1,32 @@
 import {useDeps, composeAll, composeWithTracker, compose} from 'mantra-core';
 
-import { InputLogin } from '../components/input_login.jsx';
+import { CreateUser } from '../components/create_user.jsx';
 
 export const composer = ({context}, onData) => {
-  const {LocalState} = context();
-
-  if (!LocalState.get('LOGIN_ERROR')) {
-    LocalState.set('LOGIN_ERROR', '')
-  }
+  const {Meteor, Collections, LocalState} = context();
 
   if (!LocalState.get('USER_INPUT_VALUE')) {
     LocalState.set('USER_INPUT_VALUE', '')
   }
 
   const inputVal = LocalState.get('USER_INPUT_VALUE')
-  const error = LocalState.get('LOGIN_ERROR')
+  const error = LocalState.get('CREATE_USER_ERROR')
 
-  console.log(`from composer: inputVal: ${inputVal}`)
+  console.log(`inputVal: ${inputVal}`)
   onData(null, {inputVal, error});
 
+  // clearErrors when unmounting the component
+  // return clearErrors
 };
 
 export const depsMapper = (context, actions) => ({
   context: () => context,
-  loginUser: actions.users.login,
-  logout: actions.users.logout,
-  goCreate: actions.users.goCreate,
-  inputValue: actions.users.inputValue
+  create: actions.create_user.create,
+  inputValue: actions.create_user.inputValue,
+  clearErrors: actions.create_user.clearErrors
 });
 
 export default composeAll(
   composeWithTracker(composer),
   useDeps(depsMapper)
-)(InputLogin);
+)(CreateUser);

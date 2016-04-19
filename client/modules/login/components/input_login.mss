@@ -40,4 +40,10 @@
   width: 50rem;
   height: 8rem;
   margin-top: 50px;
+  cursor: pointer;
+}
+
+.buttonWrap {
+  padding-top: 25px;
+  cursor: pointer;
 }

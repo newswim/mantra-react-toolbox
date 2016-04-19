@@ -1,7 +1,7 @@
 import React from 'react'
-import AppBar from 'react-toolbox/lib/app_bar'
 import Helmet from 'react-helmet'
 import Menu from '../containers/menu'
+import styles from './main_layout.m.styl'
 
 const Layout = ({content = () => null }) => (
   <div>
@@ -10,9 +10,9 @@ const Layout = ({content = () => null }) => (
             {"rel": "stylesheet", "href": "https://fonts.googleapis.com/icon?family=Material+Icons"}
         ]}
     />
-    <AppBar relative flat>
+  <div className={styles.topBar}>
         <Menu />
-    </AppBar>
+    </div>
     <div>
         {content()}
     </div>

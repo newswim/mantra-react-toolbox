@@ -30,6 +30,7 @@ accounts-base
 accounts-password
 
 fortawesome:fontawesome
-nathantreid:css-modules
+# nathantreid:css-modules
+savi:css-modules
 aldeed:collection2
 kadira:flow-router

@@ -14,14 +14,14 @@ export default function (injectDeps, {FlowRouter}) {
   FlowRouter.route('/', {
     name: 'main',
     action() {
-      // if (!Meteor.userId()) {
-      //     FlowRouter.go('/login');
-      // }
+      if (!Meteor.userId()) {
+          FlowRouter.go('/login');
+      }
       mount(MainLayoutCtx, {
         content: () => (<Home />)
       });
     }
-  });
+  })
 
   FlowRouter.route('/products', {
     name: 'products',
@@ -30,7 +30,7 @@ export default function (injectDeps, {FlowRouter}) {
         content: () => (<ProductList />)
       });
     }
-  });
+  })
 
   FlowRouter.route('/alt', {
     name: 'alt',
@@ -39,5 +39,6 @@ export default function (injectDeps, {FlowRouter}) {
         content: () => (<ProductList />)
       });
     }
-  });
+  })
+
 }
