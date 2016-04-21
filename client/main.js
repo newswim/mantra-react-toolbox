@@ -6,6 +6,7 @@ import coreModule from './modules/core';
 import react_utilsModule from './modules/react_utils';
 import loginModule from './modules/login';
 import quotesModule from './modules/quotes';
+import new_productModule from './modules/new_product';
 
 // init context
 const context = initContext();
@@ -16,4 +17,5 @@ app.loadModule(coreModule);
 app.loadModule(react_utilsModule);
 app.loadModule(loginModule);
 app.loadModule(quotesModule);
+app.loadModule(new_productModule);
 app.init();

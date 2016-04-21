@@ -19,7 +19,6 @@ standard-minifier-js    # JS minifier run for production mode
 es5-shim                # ECMAScript 5 compatibility for older browsers.
 ecmascript              # Enable ECMAScript2015+ syntax in app code
 
-autopublish             # Publish all data to the clients (for prototyping)
 insecure                # Allow all DB writes from clients (for prototyping)
 
 babel-compiler          # Note: might be removed when 'class transform' issue resolved
@@ -30,7 +29,7 @@ accounts-base
 accounts-password
 
 fortawesome:fontawesome
-# nathantreid:css-modules
-savi:css-modules
+nathantreid:css-modules
+# savi:css-modules
 aldeed:collection2
 kadira:flow-router

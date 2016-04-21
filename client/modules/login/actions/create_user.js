@@ -13,7 +13,10 @@ export default {
     LocalState.set('CREATE_USER_ERROR', null);
 
     Accounts.createUser({username, password});
-    FlowRouter.go('/login');
+
+    Meteor.setTimeout(() => {
+      FlowRouter.go('/login')
+    }, 300)
   },
 
   inputValue({LocalState}, ...thingTyped) {

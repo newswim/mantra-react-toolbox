@@ -5,7 +5,8 @@ import { check } from 'meteor/check';
 export default function () {
   Meteor.methods({
     'product.create'(name, vendor) {
-      const createdAt = new Date();
+      const createdAt = new Date()
+
       const product = {name, vendor, createdAt};
       check(name, String)
       check(vendor, String)

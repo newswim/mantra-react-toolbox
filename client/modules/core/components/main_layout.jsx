@@ -1,7 +1,7 @@
 import React from 'react'
 import Helmet from 'react-helmet'
 import Menu from '../containers/menu'
-import styles from './main_layout.m.styl'
+import styles from './main_layout.scss'
 
 const Layout = ({content = () => null }) => (
   <div>

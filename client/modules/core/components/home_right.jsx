@@ -1,6 +1,6 @@
 import React from 'react'
 import { BaseComponent } from '/client/modules/react_utils'
-import styles from './home_right.m.styl'
+import styles from './home_right.scss'
 
 import { List, ListItem, ListSubHeader, ListDivider, ListCheckbox } from 'react-toolbox/lib/list';
 

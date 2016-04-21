@@ -1,7 +1,7 @@
 import React from 'react'
 import { IconMenu, MenuItem, MenuDivider } from 'react-toolbox/lib/menu'
 import Avatar from 'react-toolbox/lib/avatar';
-import styles from './main_layout.m.styl'
+import styles from './main_layout.scss'
 
 class Menu extends React.Component {
 

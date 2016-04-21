@@ -5,7 +5,7 @@ import { BaseComponent } from '/client/modules/react_utils'
 import { Card, CardMedia, CardTitle, CardText, CardActions } from 'react-toolbox/lib/card'
 import HomeRightBar from './home_right'
 
-import styles from './home.m.styl'
+import styles from './home.scss'
 
 // NEW QUOTE | VIEW/EDIT EXISTING PRICESHEET | SOME OTHER THING
 

@@ -1,19 +1,19 @@
 import React  from 'react'
 import styles from './input_login.mss'
-import Input  from 'react-toolbox/lib/input';
+import Input  from 'react-toolbox/lib/input'
 import { BaseComponent } from '/client/modules/react_utils'
 
 export class InputLogin extends BaseComponent {
   constructor () {
     super()
     this.bindHandlers(
-      'handleChange',
-      'handleLogin',
       'handleLogout',
-      'handleCreate'
+      'handleChange',
+      'handleCreate',
+      'handleLogin'
     )
-
   }
+
   render() {
     const { inputVal, error } = this.props
     return (
@@ -28,6 +28,7 @@ export class InputLogin extends BaseComponent {
           <Input
             maxLength={16 }
             required
+            type='text'
             onChange={this.handleChange}
             value={inputVal}
             icon='person'
@@ -36,6 +37,7 @@ export class InputLogin extends BaseComponent {
           />
           <Input
             required
+            type='password'
             icon='lock'
             label='Password'
             ref='password'
@@ -70,7 +72,7 @@ export class InputLogin extends BaseComponent {
     const username = this.refs.username.refs.input.value
     const { loginUser } = this.props
 
-    console.log("logging in, ${username}")
+    console.log(`logging in, ${username}`)
 
     loginUser(username, password)
 
@@ -82,7 +84,6 @@ export class InputLogin extends BaseComponent {
   }
 
   handleCreate() {
-    debugger;
     const { goCreate } = this.props
     goCreate()
   }
