@@ -11,11 +11,12 @@ export const composer = ({context}, onData) => {
   }
 };
 
-// export const depsMapper = (context, actions) => ({
-//   context: () => context
-// });
+export const depsMapper = (context, actions) => ({
+  context: () => context,
+  _execute_delete: actions.products.execute_delete
+});
 
 export default composeAll(
   composeWithTracker(composer),
-  useDeps()
+  useDeps(depsMapper)
 )(ProductList);

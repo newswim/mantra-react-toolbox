@@ -1,20 +1,20 @@
 export default {
-  inputValue({LocalState}, locState, ...thingTyped) {
+  inputValue({LocalState}, locState, thingTyped) {
     console.log(`from action: ${locState}: ${thingTyped}`)
 
     // "forward-seeking reduction machine"
-    // if these functions
+    // debugger
     switch (locState) {
-      case locState === "inputQuote":
-        return LocalState.set("USER_INPUT_QUOTE", ...thingTyped)
+      case "inputQuote":
+        return LocalState.set("USER_INPUT_QUOTE", thingTyped)
       case "inputContact":
-        return LocalState.set("USER_INPUT_CONTACT", ...thingTyped)
+        return LocalState.set("USER_INPUT_CONTACT", thingTyped)
       case "inputOrg":
-        return LocalState.set("USER_INPUT_ORG", ...thingTyped)
+        return LocalState.set("USER_INPUT_ORG", thingTyped)
       case "inputLoc":
-        return LocalState.set("USER_INPUT_LOC", ...thingTyped)
+        return LocalState.set("USER_INPUT_LOC", thingTyped)
       default:
-        return;
+        return LocalState.set('USER_INPUT_ERROR', 'There was some error.');
     }
   }
 }

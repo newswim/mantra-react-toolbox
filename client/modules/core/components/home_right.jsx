@@ -6,16 +6,16 @@ import { List, ListItem, ListSubHeader, ListDivider, ListCheckbox } from 'react-
 
 const ListTest = () => (
   <List selectable ripple>
-    <ListSubHeader caption='Recent' />
+    <ListSubHeader caption='Recent Quotes' />
     <ListDivider />
     <ListItem
-      caption='Topgolf whatever'
+      caption='Topgolf Ameretto'
     />
     <ListItem
-      caption='Topgolf whatever'
+      caption='Topgolf Justin Landrover'
     />
     <ListItem
-      caption='Topgolf whatever'
+      caption='Topgolf Quincy'
     />
     <ListSubHeader caption='Templates' />
     <ListDivider />

@@ -7,7 +7,7 @@ export default {
   // We need to decide if updating and creating are different enough that
   // they need to be separated
 
-  addNewProduct({Meteor, LocalState, Collections}, newProduct, id) {
+  addNewProduct({Meteor, LocalState, Collections}, newProduct) {
 
     // Call Meteor method insert new product
     // like Meteor.call('products.add', newProduct)
@@ -18,7 +18,7 @@ export default {
     if (!LocalState.get('CURRENT_PRODUCT_ID')) {
       LocalState.set('UPDATE_PRODUCT_ERROR', 'need an id!')
     } else {
-      LocalState.set('UPDATE_PRODUCT_ERROR', null)
+      // LocalState.set('UPDATE_PRODUCT_ERROR', null)
       try { LocalState.set('CURRENT_PRODUCT_ID', id) }
       catch (error) { throw error }
 
@@ -36,16 +36,8 @@ export default {
     // pretty sure that LocalState will not perform set call if there's
     // no update to be made
 
-    // .ready() is a reactive data source
-    // subscriptionId can be used to reference certain subscriptions [reactive array-like structures]
-
-    //   LocalState.set('GET_PRODUCT_HISTORY_STATUS', 'product retrieved')
-    //
-    // } else {
-    //
-    //   LocalState.set('GET_PRODUCT_HISTORY_STATUS', 'ready to be updated' )
-    //
-    // }
+    // .ready()           is a reactive data source
+    // .subscriptionId()  can be used to reference certain subscriptions [reactive array-like structures]
 
   },
 
@@ -56,6 +48,8 @@ export default {
   actuallyReallyUpdate({Meteor, Collections, LocalState}, NewStateToUpdate, oldState) {
 
     const id = oldState.id
+
+    // const id = LocalState.get('CURRENT_PRODUCT_ID')
 
     LocalState.set('NEW_PRODUCT_PRICE', `ADDING PRODUCT ${newStateOfProduct}`)
 

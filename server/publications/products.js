@@ -7,7 +7,7 @@ export default function () {
   Meteor.publish('products.list', function () {
     const selector = {};
     const options = {
-      fields: {_id: 1, name: 1, vendor: 1},
+      fields: {_id: 1, mfr_name: 1, name: 1,  description: 1,  purchase_price: 1},
       sort: {createdAt: -1},
       limit: 10
     };

@@ -15,19 +15,15 @@ export const composer = ({context}, onData) => {
     update_error,
     new_price
   }
-  
-  if (Meteor.subscribe('product_history').ready()) {
+
+  if (Meteor.subscribe('product_history.all').ready()) {
+    const product_history = Collections.ProductHistory.find(/* {_id: curr_id} */).fetch()
     LocalState.set('GET_PRODUCT_HISTORY_STATUS', 'product retrieved')
-
-    const current_product = Collections.ProductHistory.find({_id: curr_id})
-
   } else {
-
     LocalState.set('GET_PRODUCT_HISTORY_STATUS', 'ready to be updated' )
-
   }
 
-  onData(null, { current_product, status });
+  onData(null, { /*product_history, */ status });
 };
 
 export const depsMapper = (context, actions) => ({

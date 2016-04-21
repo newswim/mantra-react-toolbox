@@ -8,4 +8,3 @@ methods()
 // IMPORT COLLECTIONS
 
 import '/lib/collections'
-import '/lib/collections/products.js'

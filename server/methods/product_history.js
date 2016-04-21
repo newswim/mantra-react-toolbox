@@ -31,7 +31,7 @@ export default function () {
       const currentDate = new Date()
       const propsToInsert = {
 
-        id,                 // keeping the id for ref (result of asking ID of current product)
+        id,       // keeping the id for ref (result of asking ID of current product)
         name,
         mfr_name,
         part_num,
@@ -45,7 +45,7 @@ export default function () {
         labor_unit,
         website,
         date_last_edited,
-        active, //bool
+        active,   //bool
         currentDate
       }
 

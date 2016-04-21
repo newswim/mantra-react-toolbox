@@ -17,5 +17,15 @@ export default function () {
 
       return insertProduct
     }
-  });
+  })
+
+  Meteor.methods({
+    'product.delete'(id) {
+      check(id, String)
+      const deleteProduct = Products.remove({ "_id": id });
+
+      console.log(`Removed product: ${id}`)
+      return deleteProduct
+    }
+  })
 }

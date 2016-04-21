@@ -17,15 +17,15 @@ export const composer = ({context}, onData) => {
   if (!LocalState.get('USER_INPUT_LOC')) {
     LocalState.set('USER_INPUT_LOC', '')
   }
-  if (!LocalState.get('INPUT_ERROR_QUOTE')) {
-    LocalState.set('INPUT_ERROR_QUOTE', '')
+  if (!LocalState.get('USER_INPUT_ERROR')) {
+    LocalState.set('USER_INPUT_ERROR', '')
   }
 
   const inputQuote   = LocalState.get('USER_INPUT_QUOTE')
   const inputContact = LocalState.get('USER_INPUT_CONTACT')
   const inputOrg     = LocalState.get('USER_INPUT_ORG')
   const inputLoc     = LocalState.get('USER_INPUT_LOC')
-  const error        = LocalState.get('INPUT_ERROR_QUOTE')
+  const error        = LocalState.get('USER_INPUT_ERROR')
 
   onData(null, { inputQuote, inputContact, inputOrg, inputLoc, error });
 };
