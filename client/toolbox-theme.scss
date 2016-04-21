@@ -1,2 +1,11 @@
-$color-primary: $palette-blue-500 !default;
-$color-primary-dark: $palette-blue-700 !default;
+// These variables reflect Arrow's branding, and override some of the default
+// settings provided by React Toolbox.
+
+// For implementation details, see Nathan Ried's example:
+// https://github.com/nathantreid/meteor-react-toolbox-example
+
+
+// COLORS
+
+$color-primary: #6D94C7 !default;
+$color-primary-dark: #6386B4 !default;

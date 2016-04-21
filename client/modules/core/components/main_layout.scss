@@ -1,0 +1,15 @@
+.topBar {
+  height: 80px;
+  width: 100%;
+  background-color: white;
+
+}
+
+.userMenu {
+  padding-right: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  height: 100%;
+}

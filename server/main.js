@@ -1,10 +1,10 @@
 import publications from './publications';
-
-publications();
-
-
-// Be sure to import meteor methods
-
 import methods from './methods'
 
+publications()
 methods()
+
+
+// IMPORT COLLECTIONS
+
+import '/lib/collections'

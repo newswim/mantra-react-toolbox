@@ -24,6 +24,7 @@
     "react": "^15.0.0",
     "react-addons-css-transition-group": "15.0.1",
     "react-dom": "^15.0.0",
+    "react-helmet": "3.0.1",
     "react-komposer": "^1.8.0",
     "react-mounter": "^1.2.0",
     "react-simple-di": "^1.2.0",
@@ -31,7 +32,9 @@
   },
   "cssModules": {
     "extensions": [
-      "scss"
+      "mss",
+      "scss",
+      "m.styl"
     ],
     "globalVariables": [
       "node_modules/react-toolbox/lib/_colors.scss",

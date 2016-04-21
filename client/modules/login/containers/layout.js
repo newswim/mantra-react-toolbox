@@ -1,6 +1,6 @@
 import {useDeps, composeAll, composeWithTracker, compose} from 'mantra-core';
 
-import Front from '../components/front.jsx';
+import Layout from '../components/layout.jsx';
 
 export const composer = ({context}, onData) => {
   const {Meteor, Collections} = context();
@@ -15,4 +15,4 @@ export const depsMapper = (context, actions) => ({
 export default composeAll(
   composeWithTracker(composer),
   useDeps(depsMapper)
-)(Front);
+)(Layout);

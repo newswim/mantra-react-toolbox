@@ -1,7 +1,7 @@
-import products from './products';
-import nav from './nav';
+import menu from './menu';
+import alt_layout from './alt_layout';
 
 export default {
-  products,
-  nav
+  menu,
+  alt_layout
 };
