@@ -4,8 +4,19 @@
 // For implementation details, see Nathan Ried's example:
 // https://github.com/nathantreid/meteor-react-toolbox-example
 
-
 // COLORS
 
 $color-primary: #6D94C7 !default;
 $color-primary-dark: #6386B4 !default;
+
+$input-text-label-color: rgba(255, 255, 255, 0.45);
+$color-text: rgba(250, 250, 250, 0.78);
+
+
+$menu-background-color: #585D6C;
+$menu-item-hover-background: #6386B4;
+
+// Lists
+$list-item-hover-color: #6386B4;
+$list-subheader-font-size: 2.4rem;
+$color-text-secondary: #A6AAB0;

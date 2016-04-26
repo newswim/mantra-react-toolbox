@@ -16,11 +16,15 @@ export default {
 
     Meteor.setTimeout(() => {
       FlowRouter.go('/login')
-    }, 300)
+    }, 200)
   },
 
   inputValue({LocalState}, ...thingTyped) {
-    return LocalState.set('USER_INPUT_VALUE', ...thingTyped);
+    return LocalState.set('USER_NAME_VALUE', ...thingTyped);
+  },
+
+  passVal({LocalState}, ...typeType) {
+    return LocalState.set('USER_PASS_VALUE', ...typeType);
   },
 
   clearErrors({LocalState}) {

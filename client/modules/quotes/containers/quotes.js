@@ -27,7 +27,13 @@ export const composer = ({context}, onData) => {
   const inputLoc     = LocalState.get('USER_INPUT_LOC')
   const error        = LocalState.get('USER_INPUT_ERROR')
 
-  onData(null, { inputQuote, inputContact, inputOrg, inputLoc, error });
+  onData(null, {
+    inputQuote,
+    inputContact,
+    inputOrg,
+    inputLoc,
+    error
+  });
 };
 
 export const depsMapper = (context, actions) => ({

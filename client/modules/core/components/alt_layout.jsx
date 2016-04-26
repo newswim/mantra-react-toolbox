@@ -4,17 +4,30 @@ import { AppBar, Checkbox, IconButton } from 'react-toolbox'
 import { Layout, NavDrawer, Panel, Sidebar } from 'react-toolbox'
 import { BaseComponent } from '/client/modules/react_utils'
 import Helmet from 'react-helmet'
+import { Grid } from 'react-virtualized'
 
-import context from '/client/configs/context.js'
+
+// Grid data as an array of arrays
+const list = [
+  ['Brian Vaughn', 'Software Engineer', 'San Jose', 'CA', 95125 /* ... */ ],
+  ['Brian Vaughn', 'Software Engineer', 'San Jose', 'CA', 95125 /* ... */ ],
+  ['Brian Vaughn', 'Software Engineer', 'San Jose', 'CA', 95125 /* ... */ ],
+  ['Brian Vaughn', 'Software Engineer', 'San Jose', 'CA', 95125 /* ... */ ],
+  ['Brian Vaughn', 'Software Engineer', 'San Jose', 'CA', 95125 /* ... */ ],
+  ['Brian Vaughn', 'Software Engineer', 'San Jose', 'CA', 95125 /* ... */ ],
+  ['Brian Vaughn', 'Software Engineer', 'San Jose', 'CA', 95125 /* ... */ ],
+  ['Brian Vaughn', 'Software Engineer', 'San Jose', 'CA', 95125 /* ... */ ],
+  ['Brian Vaughn', 'Software Engineer', 'San Jose', 'CA', 95125 /* ... */ ],
+  ['Brian Vaughn', 'Software Engineer', 'San Jose', 'CA', 95125 /* ... */ ],
+  ['Brian Vaughn', 'Software Engineer', 'San Jose', 'CA', 95125 /* ... */ ],
+  ['Brian Vaughn', 'Software Engineer', 'San Jose', 'CA', 95125 /* ... */ ],
+  ['Brian Vaughn', 'Software Engineer', 'San Jose', 'CA', 95125 /* ... */ ]
+  // And so on...
+];
 
 let drawerActive  = new ReactiveVar(false)
 let drawerPinned  = new ReactiveVar(false)
 let sidebarPinned = new ReactiveVar(false)
-
-// const getDrawer = new Tracker.autorun(function () {
-//   drawerActive.get()
-// })
-
 
 class AltLayout extends BaseComponent {
   constructor () {
@@ -30,14 +43,12 @@ class AltLayout extends BaseComponent {
   }
 
   render() {
-
-    const { LocalState } = context()
-
     return (
       <section>
         <Helmet
             link={[
-                {"rel": "stylesheet", "href": "https://fonts.googleapis.com/icon?family=Material+Icons"}
+                {"rel": "stylesheet", "href": "https://fonts.googleapis.com/icon?family=Material+Icons"},
+                {"rel": "stylesheet", "href": "/styles/styles.css"}
             ]}
         />
         <Layout>
@@ -67,7 +78,15 @@ class AltLayout extends BaseComponent {
                 </div>
             </Sidebar>
         </Layout>
-
+        <Grid
+           width={600}
+           height={300}
+           columnWidth={100}
+           rowHeight={30}
+           columnsCount={list.length}
+           rowsCount={list.length}
+           renderCell={({ columnIndex, rowIndex }) => list[rowIndex][columnIndex]}
+         />
       </section>
     );
   }

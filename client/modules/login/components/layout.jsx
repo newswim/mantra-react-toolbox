@@ -9,8 +9,6 @@ const Layout = ({content = () => null }) => (
             {"rel": "stylesheet", "href": "https://fonts.googleapis.com/icon?family=Material+Icons"}
         ]}
     />
-    <AppBar relative flat>
-    </AppBar>
     <div>
         {content()}
     </div>

@@ -7,10 +7,10 @@ class Menu extends React.Component {
 
   render() {
     return (
-      <div>
-
       <div className={styles.userMenu}>
-        <span style={{marginLeft: 'auto', marginRight: 'auto'}}><h1>Arrow</h1></span>
+        <span style={{marginLeft: 'auto', marginRight: 'auto'}}>
+          <h1><a href="/" style={{color: "#0A477C"}}>Arrow</a></h1>
+        </span>
         <span>{Meteor.userId()}</span>
         <Avatar title={Meteor.userId()} image="https://placeimg.com/80/80/animals"/>
         <IconMenu icon='arrow_drop_down' position='top-right' menuRipple>
@@ -20,7 +20,6 @@ class Menu extends React.Component {
             <MenuDivider />
             <MenuItem icon='settings_backup_restore' caption='Home' onClick={this._goHome.bind(this)} />
         </IconMenu>
-      </div>
       </div>
     )
   }

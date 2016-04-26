@@ -10,10 +10,11 @@ export const composer = ({context}, onData) => {
   }
 
   const inputVal = LocalState.get('USER_INPUT_VALUE')
+  const passVal = LocalState.get('USER_PASS_VALUE')
   const error = LocalState.get('CREATE_USER_ERROR')
 
   console.log(`inputVal: ${inputVal}`)
-  onData(null, {inputVal, error});
+  onData(null, {inputVal, passVal, error});
 
   // clearErrors when unmounting the component
   // return clearErrors
@@ -23,6 +24,7 @@ export const depsMapper = (context, actions) => ({
   context: () => context,
   create: actions.create_user.create,
   inputValue: actions.create_user.inputValue,
+  passValue: actions.create_user.passValue,
   clearErrors: actions.create_user.clearErrors
 });
 

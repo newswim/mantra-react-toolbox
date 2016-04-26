@@ -14,10 +14,11 @@ export const composer = ({context}, onData) => {
   }
 
   const inputVal = LocalState.get('USER_INPUT_VALUE')
+  const passVal = LocalState.get('USER_PASS_VALUE')
   const error = LocalState.get('LOGIN_ERROR')
 
   console.log(`from composer: inputVal: ${inputVal}`)
-  onData(null, {inputVal, error});
+  onData(null, {inputVal, passVal, error});
 
 };
 
@@ -26,7 +27,8 @@ export const depsMapper = (context, actions) => ({
   loginUser: actions.users.login,
   logout: actions.users.logout,
   goCreate: actions.users.goCreate,
-  inputValue: actions.users.inputValue
+  inputValue: actions.users.inputValue,
+  passValue: actions.users.passValue
 });
 
 export default composeAll(

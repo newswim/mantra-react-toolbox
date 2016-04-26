@@ -8,12 +8,12 @@ export class CreateUser extends BaseComponent {
     super()
     this.bindHandlers(
       'handleChange',
-      'handleSubmit'
+      'handleSubmit',
+      'handlePass'
     )
-
   }
   render() {
-    const { inputVal, error } = this.props
+    const { inputVal, passVal, error } = this.props
     return (
       <div className={styles.loginWrapper}>
         <div className={styles.headWrap}>
@@ -33,12 +33,15 @@ export class CreateUser extends BaseComponent {
             ref='username'
           />
           <Input
+            type="password"
             required
+            onChange={this.handlePass}
+            value={passVal}
             icon='lock'
             label='Password'
             ref='password'
           />
-        <div className={styles.loginButton} onClick={this.handleSubmit}><h5>Create</h5></div>
+        <div className={styles.createButton} onClick={this.handleSubmit}><h5>Create</h5></div>
         </div>
         {error ? <p style={{color: 'red'}}>{error}</p> : null}
       </div>
@@ -67,5 +70,16 @@ export class CreateUser extends BaseComponent {
 
     create(username, password)
 
+  }
+
+  handlePass(event) {
+    if (event && event.preventDefault) {
+      event.preventDefault();
+    }
+    let typeType = event
+
+    const { passValue } = this.props
+
+    passValue(typeType)
   }
 }

@@ -1,4 +1,4 @@
 .productWrap {
   width: 50%;
-  background-color: #ddd;
+  background-color: #515665;
 }

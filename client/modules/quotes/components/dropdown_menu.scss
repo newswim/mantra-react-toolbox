@@ -1,0 +1,14 @@
+.default__options__wrap {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.select__wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  label {
+    color: rgba(255, 255, 255, 0.75);
+  }
+}

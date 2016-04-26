@@ -9,13 +9,14 @@ export class InputLogin extends BaseComponent {
     this.bindHandlers(
       'handleLogout',
       'handleChange',
+      'handlePass',
       'handleCreate',
       'handleLogin'
     )
   }
 
   render() {
-    const { inputVal, error } = this.props
+    const { inputVal, passVal, error } = this.props
     return (
       <div className={styles.loginWrapper}>
         <div className={styles.headWrap}>
@@ -36,7 +37,10 @@ export class InputLogin extends BaseComponent {
             ref='username'
           />
           <Input
+            maxLength={16 }
             required
+            onChange={this.handlePass}
+            value={passVal}
             type='password'
             icon='lock'
             label='Password'
@@ -86,5 +90,16 @@ export class InputLogin extends BaseComponent {
   handleCreate() {
     const { goCreate } = this.props
     goCreate()
+  }
+
+  handlePass(event) {
+    if (event && event.preventDefault) {
+      event.preventDefault();
+    }
+    let typeType = event
+    
+    const { passValue } = this.props
+
+    passValue(typeType)
   }
 }

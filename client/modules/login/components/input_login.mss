@@ -21,7 +21,7 @@
 
 .loginCard {
   padding-top: 2rem;
-  background-color: rgb(208, 215, 231);
+  background-color: #585D6C;
   margin-top: 6rem;
   color: #B5B9C8;
   padding-right: 2rem;
@@ -33,6 +33,18 @@
 
 .loginButton {
   background-color: #68C6BE;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50rem;
+  height: 8rem;
+  margin-top: 50px;
+  cursor: pointer;
+}
+
+.createButton {
+  background-color: rgb(244, 228, 93);
   color: white;
   display: flex;
   justify-content: center;

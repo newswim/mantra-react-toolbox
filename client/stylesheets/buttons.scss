@@ -1,0 +1,25 @@
+// import './_colors.scss'
+
+._arrow_button {
+  width: 50%;
+  height: 7rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: rgba(250, 250, 250, 0.90);
+}
+
+._ok_button {
+  @extend ._arrow_button;
+  background-color: #68C6BE;
+}
+
+._cancel_button {
+  @extend ._arrow_button;
+  background-color: #62687A;
+}
+
+._flex_wrapper {
+  display: flex;
+}

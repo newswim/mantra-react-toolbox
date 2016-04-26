@@ -11,7 +11,7 @@ export const composer = ({context}, onData) => {
 
   const data = {toggle_drawer, pin_drawer, toggle_side}
 
-  onData(null, { data } )
+  onData(null, { data} )
 };
 
 export const depsMapper = (context, actions) => ({

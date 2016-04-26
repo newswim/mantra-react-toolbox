@@ -16,10 +16,8 @@ export default function () {
       console.log(`Added ${name} to Products`)
 
       return insertProduct
-    }
-  })
+    },
 
-  Meteor.methods({
     'product.delete'(id) {
       check(id, String)
       const deleteProduct = Products.remove({ "_id": id });

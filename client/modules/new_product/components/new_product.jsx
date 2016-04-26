@@ -44,8 +44,6 @@ class NewProduct extends BaseComponent {
 
     const newProduct = { name, vendor}
 
-    console.log(newProduct)
-    debugger;
     execute_add_product(newProduct)
 
     this.refs.name.value = ''

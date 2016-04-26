@@ -9,7 +9,7 @@ export default function () {
     const options = {
       fields: {_id: 1, mfr_name: 1, name: 1,  description: 1,  purchase_price: 1},
       sort: {createdAt: -1},
-      limit: 10
+      // limit: 10
     };
 
     return Products.find(selector, options);

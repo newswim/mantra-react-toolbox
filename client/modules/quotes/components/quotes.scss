@@ -1,0 +1,41 @@
+@import "~react-toolbox/lib/input/style.scss";
+
+// Specific overrides for React Toolbox styles
+._node_modules_react_toolbox_lib_input__style__counter {
+  color: rgba(250, 250, 250, 0.26);
+}
+
+._form__wrapper {
+  width: 75%;
+  margin-right: auto;
+  margin-left: auto;
+  background-color: #585D6C;
+  padding: 15px;
+  padding-bottom: 50px;
+}
+
+._input__wrapper {
+  width: 50%;
+  display: inline-block;
+  padding: 0 22px;
+}
+
+._quote_sub_heading {
+  text-align: center;
+  padding: 20px;
+  h4, h3 {
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 100;
+    color: rgba(255, 255, 255, 0.75);
+  }
+  h4 {
+    margin-top: 10px;
+  }
+}
+
+._button_wrapper {
+  width: 75%;
+  height: 2rem;
+  margin-left:auto;
+  margin-right:auto;
+}

@@ -13,7 +13,7 @@ export default function (injectDeps, {FlowRouter}) {
       mount(MainLayoutCtx, {
         content: () => (
           <div>
-            <a href="/new">add a product</a><br />
+            <a href="/new"><h3>add a product</h3></a><br />
             <ListWrapper />
           </div>
         )

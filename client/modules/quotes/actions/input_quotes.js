@@ -16,5 +16,26 @@ export default {
       default:
         return LocalState.set('USER_INPUT_ERROR', 'There was some error.');
     }
+  },
+  create({Meteor, LocalState}, myParam) {
+
+    // e.g. update local state
+    LocalState.set('CREATE_QUOTE_ERROR', null);
+    if (!myParam) {
+     LocalState.set('CREATE_QUOTE_ERROR', 'new quote is missing some fields.');
+     return;
+    }
+
+    // update remote state
+    Meteor.call('quotes.createNew', id, newQuote, notes, (err) => {
+     if (err) {
+       alert(`Quote creation failed: ${err.message}`);
+     }
+    });
+  },
+
+  // e.g. clear local state
+  clearErrors({LocalState}) {
+   return LocalState.set('CREATE_QUOTE_ERROR', null);
   }
 }

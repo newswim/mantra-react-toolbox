@@ -30,6 +30,11 @@ export default {
     console.log("from action: ", thingTyped)
     return LocalState.set('USER_INPUT_VALUE', ...thingTyped);
   },
+  
+  passValue({LocalState}, ...typeType) {
+    console.log("from action: ", typeType)
+    return LocalState.set('USER_PASS_VALUE', ...typeType);
+  },
 
   logout({Meteor, FlowRouter}) {
     Meteor.logout()

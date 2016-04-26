@@ -3,13 +3,18 @@ import { Meteor } from 'meteor/meteor'
 import {Button, IconButton} from 'react-toolbox/lib/button'
 import { BaseComponent } from '/client/modules/react_utils'
 import { Card, CardMedia, CardTitle, CardText, CardActions } from 'react-toolbox/lib/card'
-import HomeRightBar from './home_right'
+import HomeRightBar from '../containers/home_right'
 
 import styles from './home.scss'
 
 // NEW QUOTE | VIEW/EDIT EXISTING PRICESHEET | SOME OTHER THING
 
 class Home extends BaseComponent {
+  constructor (props) {
+    super(props)
+    this.bindHandlers('handleClick')
+  }
+
   render() {
     const { error } = this.props;
 
@@ -22,7 +27,7 @@ class Home extends BaseComponent {
               display: 'inline-block',
               margin: '10px'
             }} >
-           <div className={styles.cardText}>
+           <div className={styles.cardText} onClick={() => this.handleClick('/quotes')}>
              <h4>New Quote</h4>
            </div>
          </Card>
@@ -50,6 +55,13 @@ class Home extends BaseComponent {
         <HomeRightBar />
       </div>
     );
+  }
+
+  handleClick(route) {
+    console.log(route)
+    const { goToRoute } = this.props
+
+    goToRoute(route)
   }
 }
 

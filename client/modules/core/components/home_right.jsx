@@ -1,35 +1,31 @@
 import React from 'react'
 import { BaseComponent } from '/client/modules/react_utils'
+import QuoteItem from './home_right_item'
+import { List, ListItem, ListSubHeader, ListDivider, ListCheckbox } from 'react-toolbox/lib/list'
 import styles from './home_right.scss'
 
-import { List, ListItem, ListSubHeader, ListDivider, ListCheckbox } from 'react-toolbox/lib/list';
-
-const ListTest = () => (
-  <List selectable ripple>
-    <ListSubHeader caption='Recent Quotes' />
-    <ListDivider />
-    <ListItem
-      caption='Topgolf Ameretto'
-    />
-    <ListItem
-      caption='Topgolf Justin Landrover'
-    />
-    <ListItem
-      caption='Topgolf Quincy'
-    />
-    <ListSubHeader caption='Templates' />
-    <ListDivider />
-
-  </List>
-);
 
 class HomeRightBar extends BaseComponent {
   render() {
-    const { error } = this.props;
-
+    const { quotes } = this.props
     return (
       <div className={styles.rightWrapper}>
-          <ListTest />
+        <List selectable ripple>
+          <ListSubHeader caption='Recent Quotes' />
+          <ListDivider />
+          {
+            quotes.map(quote => (
+              <QuoteItem
+                key={quote._id}
+                quote={quote.newQuote}
+              />
+            ))
+          }
+
+          <ListSubHeader caption='Templates' />
+          <ListDivider />
+
+        </List>
       </div>
     );
   }
