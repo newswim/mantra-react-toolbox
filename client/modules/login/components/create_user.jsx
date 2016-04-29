@@ -9,7 +9,8 @@ export class CreateUser extends BaseComponent {
     this.bindHandlers(
       'handleChange',
       'handleSubmit',
-      'handlePass'
+      'handlePass',
+      'handleKeyPress'
     )
   }
   render() {
@@ -36,6 +37,7 @@ export class CreateUser extends BaseComponent {
             type="password"
             required
             onChange={this.handlePass}
+            onKeyPress={this.handleKeyPress}
             value={passVal}
             icon='lock'
             label='Password'
@@ -55,7 +57,6 @@ export class CreateUser extends BaseComponent {
     // console.log(`from: event handler, ${event}`)
 
     let thingTyped = event
-
     const { inputValue } = this.props
 
     inputValue(thingTyped)
@@ -77,9 +78,20 @@ export class CreateUser extends BaseComponent {
       event.preventDefault();
     }
     let typeType = event
-
     const { passValue } = this.props
 
     passValue(typeType)
+  }
+
+  handleKeyPress(e) {
+    if (e.key === 'Enter') {
+      const password = this.refs.password.refs.input.value
+      const username = this.refs.username.refs.input.value
+      let { create } = this.props
+
+      console.log(`creating user, ${username}`)
+
+      create(username, password)
+    }
   }
 }

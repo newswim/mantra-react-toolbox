@@ -11,7 +11,8 @@ export class InputLogin extends BaseComponent {
       'handleChange',
       'handlePass',
       'handleCreate',
-      'handleLogin'
+      'handleLogin',
+      'handleKeyPress'
     )
   }
 
@@ -40,18 +41,23 @@ export class InputLogin extends BaseComponent {
             maxLength={16 }
             required
             onChange={this.handlePass}
+            onKeyPress={this.handleKeyPress}
             value={passVal}
             type='password'
             icon='lock'
             label='Password'
             ref='password'
           />
-          <div className={styles.loginButton} onClick={this.handleLogin}><h5>Login</h5></div>
+          <div
+            className={styles.loginButton}
+            onClick={this.handleLogin} >
+            <h5>Login</h5>
+          </div>
         </div>
         {error ? <p style={{color: 'red'}}>{error}</p> : null}
         <div className={styles.buttonWrap}>
-          <span onClick={this.handleCreate}>Create account</span><span> | </span>
-          <span onClick={this.handleLogout}>Forget password?</span>
+          <span onClick={this.handleCreate} >Create account</span><span> | </span>
+          <span onClick={this.handleLogout} >Forget password?</span>
         </div>
 
       </div>
@@ -97,9 +103,21 @@ export class InputLogin extends BaseComponent {
       event.preventDefault();
     }
     let typeType = event
-    
+
     const { passValue } = this.props
 
     passValue(typeType)
+  }
+
+  handleKeyPress(e) {
+    if (e.key === 'Enter') {
+      const password = this.refs.password.refs.input.value
+      const username = this.refs.username.refs.input.value
+      const { loginUser } = this.props
+
+      console.log(`logging in, ${username}`)
+
+      loginUser(username, password)
+    }
   }
 }

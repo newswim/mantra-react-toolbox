@@ -18,6 +18,7 @@ class HomeRightBar extends BaseComponent {
               <QuoteItem
                 key={quote._id}
                 quote={quote.newQuote}
+                id={quote._id}
               />
             ))
           }

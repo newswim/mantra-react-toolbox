@@ -1,21 +1,18 @@
 import {useDeps, composeAll, composeWithTracker, compose} from 'mantra-core';
 
-import HomeRightBar from '../components/home_right.jsx';
+import QuoteLayout from '../components/quote_layout.jsx';
 
 export const composer = ({context}, onData) => {
   const {Meteor, Collections} = context();
-  if (Meteor.subscribe('quotes.list').ready()) {
-    const quotes = Collections.Quotes.find().fetch();
-    onData(null, {quotes});
-  }
+
+  onData(null, {});
 };
 
 export const depsMapper = (context, actions) => ({
-  context: () => context,
-  goToRoute: actions.home.goToQuote
+  context: () => context
 });
 
 export default composeAll(
   composeWithTracker(composer),
   useDeps(depsMapper)
-)(HomeRightBar);
+)(QuoteLayout);

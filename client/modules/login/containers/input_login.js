@@ -9,9 +9,9 @@ export const composer = ({context}, onData) => {
     LocalState.set('LOGIN_ERROR', '')
   }
 
-  if (!LocalState.get('USER_INPUT_VALUE')) {
-    LocalState.set('USER_INPUT_VALUE', '')
-  }
+  // if (!LocalState.get('USER_INPUT_VALUE')) {
+  //   LocalState.set('USER_INPUT_VALUE', '')
+  // }
 
   const inputVal = LocalState.get('USER_INPUT_VALUE')
   const passVal = LocalState.get('USER_PASS_VALUE')

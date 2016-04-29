@@ -1,5 +1,5 @@
 import {useDeps, composeAll, composeWithTracker, compose} from 'mantra-core';
-
+import {catchErrors}    from '/client/modules/savi-errors'
 import { Quotes } from '../components/quotes.jsx';
 
 export const composer = ({context}, onData) => {

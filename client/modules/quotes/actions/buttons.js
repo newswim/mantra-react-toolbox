@@ -6,6 +6,16 @@ export default {
   },
 
   createQuote({Meteor, LocalState, FlowRouter, clearAll}) {
+    const states = [
+      'USER_INPUT_QUOTE',
+      'USER_INPUT_CONTACT',
+      'USER_INPUT_ORG',
+      'USER_INPUT_LOC',
+      'USER_INPUT_TAXABLE',
+      'USER_INPUT_LABOR',
+      'USER_INPUT_PROJECT_MGMT',
+      'USER_INPUT_RUN_LENGTH',
+    ]
     const inputQuote   = LocalState.get('USER_INPUT_QUOTE')
     const inputContact = LocalState.get('USER_INPUT_CONTACT')
     const inputOrg     = LocalState.get('USER_INPUT_ORG')
@@ -15,7 +25,6 @@ export default {
     const labor        = LocalState.get('USER_INPUT_LABOR')
     const projectMgmt  = LocalState.get('USER_INPUT_PROJECT_MGMT')
     const runLength    = LocalState.get('USER_INPUT_RUN_LENGTH')
-
 
     const newQuote = {
       inputQuote,
@@ -27,22 +36,35 @@ export default {
       projectMgmt,
       runLength
     }
-    console.log(`creating new quote: ${newQuote}`);
-    Meteor.call('quotes.createNew', newQuote)
-    Meteor.setTimeout(() => {
-      FlowRouter.go('/')
-    }, 100)
-    debugger
-    return clearAll
+
+    console.log(`creating new quote: ${newQuote.inputQuote}`);
+
+    // Try to create a new quote
+    console.log(newQuote.length)
+
+    // check that the Quote isn't missing any fields
+    // // shold probably use Yup for this . .
+    if (Object.keys(newQuote).length > 4) {
+      try {
+        Meteor.call('quotes.createNew', newQuote)
+        //
+        // Reset local state somehow
+        //
+        states.forEach((state) => {
+          LocalState.set(state, '')
+        })
+        return
+
+      } catch (err){
+        throw err
+      }
+    } else {
+      LocalState.set('USER_INPUT_QUOTE_ERROR', `looks like you're missing some fields.`)
+    }
+    return
+
   },
-  clearAll({Meteor, LocalState}) {
-    LocalState.set('USER_INPUT_QUOTE', null)
-    LocalState.set('USER_INPUT_CONTACT', null)
-    LocalState.set('USER_INPUT_ORG', null)
-    LocalState.set('USER_INPUT_LOC', null)
-    LocalState.set('USER_INPUT_TAXABLE', null)
-    LocalState.set('USER_INPUT_LABOR', null)
-    LocalState.set('USER_INPUT_PROJECT_MGMT', null)
-    LocalState.set('USER_INPUT_RUN_LENGTH', null)
+  clearErrors({Meteor, LocalState}) {
+    // Clear any locally saved error statements
   }
 }

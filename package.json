@@ -31,7 +31,8 @@
     "react-select": "1.0.0-beta12",
     "react-simple-di": "^1.2.0",
     "react-toolbox": "^0.16.2",
-    "react-virtualized": "6.2.1"
+    "react-virtualized": "6.2.1",
+    "yup": "0.18.2"
   },
   "cssModules": {
     "extensions": [

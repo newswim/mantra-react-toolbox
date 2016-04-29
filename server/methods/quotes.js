@@ -10,7 +10,7 @@ export default function () {
       const quote = {newQuote, createdAt}
       const insertQuote = Quotes.insert(quote);
 
-      console.log(`Added ${quote.name} to Quotes`)
+      console.log(`Added ${quote.newQuote.inputQuote} to Quotes`)
 
       return insertQuote
     }

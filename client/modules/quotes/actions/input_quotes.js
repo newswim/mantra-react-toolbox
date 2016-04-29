@@ -18,6 +18,12 @@ export default {
     }
   },
   create({Meteor, LocalState}, myParam) {
+    const localStates = [
+      'USER_INPUT_QUOTE',
+      'USER_INPUT_CONTACT',
+      'USER_INPUT_ORG',
+      'USER_INPUT_LOC',
+    ]
 
     // e.g. update local state
     LocalState.set('CREATE_QUOTE_ERROR', null);
@@ -27,9 +33,14 @@ export default {
     }
 
     // update remote state
+    debugger
     Meteor.call('quotes.createNew', id, newQuote, notes, (err) => {
      if (err) {
        alert(`Quote creation failed: ${err.message}`);
+     } else {
+       return localStates.map((state) => {
+         LocalState.set(state, '')
+       })
      }
     });
   },

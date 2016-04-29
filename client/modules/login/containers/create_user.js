@@ -5,11 +5,11 @@ import { CreateUser } from '../components/create_user.jsx';
 export const composer = ({context}, onData) => {
   const {Meteor, Collections, LocalState} = context();
 
-  if (!LocalState.get('USER_INPUT_VALUE')) {
-    LocalState.set('USER_INPUT_VALUE', '')
+  if (!LocalState.get('NEW_USER_NAME_VALUE')) {
+    LocalState.set('NEW_USER_NAME_VALUE', '')
   }
 
-  const inputVal = LocalState.get('USER_INPUT_VALUE')
+  const inputVal = LocalState.get('NEW_USER_NAME_VALUE')
   const passVal = LocalState.get('USER_PASS_VALUE')
   const error = LocalState.get('CREATE_USER_ERROR')
 

@@ -136,3 +136,9 @@ And on that note, I'm going to hold off using React-Select until some of the
 
 - Found another Select component library, http://react-component.github.io
 - and another: https://github.com/souporserious/selectly
+
+> April 29th
+
+- Another infinite list component -> https://github.com/orgsync/react-list
+- Need to click on a Quote and go to route with that Quote's information
+- (click) {quote} -> go('quote/:{quote.quoteId}') -> find quote(id) + associated docs
