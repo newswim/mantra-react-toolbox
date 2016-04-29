@@ -3,19 +3,17 @@ April 19
 Some top level React Toolbox components seem to not accept classes from modules.
 This seems to be from their being overridden by RT's own stylesheet.
 
+I don't think I can make this method repeatable due to the ``<Input />`` element's
+onChange event seeming to only return a string containing the input's value
+I could of course be wrong.. need to read up on any way to possibly destructure
+the onChange event-- Ideally so that I can include a reference to the LocalState.
+For now, I should probably just make separate events and handlers for each field.
 
-
-  // I don't think I can make this method repeatable due to the ``<Input />`` element's
-  // onChange event seeming to only return a string containing the input's value
-  // I could of course be wrong.. need to read up on any way to possibly destructure
-  // the onChange event-- Ideally so that I can include a reference to the LocalState.
-  // For now, I should probably just make separate events and handlers for each field.
-
-  // I think the Mantra way of doing things is to make a sub-component
-  // so your "dumb" components get 'props' which give it an identity
-  // Fundamentally, this is a bit different from other MVCs. WE'LL need
-  // to keep reference somewhere. But, the user's interface looks something
-  // like this:
+I think the Mantra way of doing things is to make a sub-component
+so your "dumb" components get 'props' which give it an identity
+Fundamentally, this is a bit different from other MVCs. WE'LL need
+to keep reference somewhere. But, the user's interface looks something
+like this:
 
 ```js
 
@@ -28,54 +26,53 @@ This seems to be from their being overridden by RT's own stylesheet.
 ```
 
 
-  // Meteor keeps track by giving everything in the database
-  // an ID. Similarly, Mongo will return a status whenever any
-  // change is made. By tracking these responses, "Optimistic UI"
-  // Meteor is about to distribute the source of truth, via delivering
-  // to its clients a confirmation and/or update (subscriptionally delimited)
-  // The probably with JavaScript is the getting down into the properties of
-  // deeply nested components
+Meteor keeps track by giving everything in the database
+an ID. Similarly, Mongo will return a status whenever any
+change is made. By tracking these responses, "Optimistic UI"
+Meteor is about to distribute the source of truth, via delivering
+to its clients a confirmation and/or update (subscriptionally delimited)
+The probably with JavaScript is the getting down into the properties of
+deeply nested components
 
-  // If, at the lowest level, components are just displaying the props
-  // superficially, then however the get updated can be artbitrary,
-  // all components are simply being fed data.
-  // Mantra lets us tie our logic (containers / composers) directly
-  // to our UI elements
+If, at the lowest level, components are just displaying the props
+superficially, then however the get updated can be artbitrary,
+all components are simply being fed data.
+Mantra lets us tie our logic (containers / composers) directly
+to our UI elements
 
-  // If we think of these actions first, the dressings can also be
-  // arbitrary (ie, componentalized and easily abstracted)
-
-
-  // Higher order functions
+If we think of these actions first, the dressings can also be
+arbitrary (ie, componentalized and easily abstracted)
 
 
+##### Higher order functions
 
-// Coming at it from the other way, specifying props and proptypes
-// is the only way I can think to pass references
 
-// those references are linked to stores which update
-// rather that the Flux architecture of keeping a store for every state
-// (otherwise no updating could occur) // Redux keeps one overarching store
-// that way an address of the referent "/App/db/entry\point/component/sets of things"
-// since the data is actually residing on the parent component, I can share
-// between our sibling comps.
+Coming at it from the other way, specifying props and proptypes
+is the only way I can think to pass references
 
-// The difference in Mantra being that a copy of the entire store is seemingly
-// not passed every time, however the Meteor object passed (via being a parent element)
-// so eventually these props meet back up again, since a reference to the common object
-// is always stored farther up.
+those references are linked to stores which update
+rather that the Flux architecture of keeping a store for every state
+(otherwise no updating could occur) // Redux keeps one overarching store
+that way an address of the referent "/App/db/entry\point/component/sets of things"
+since the data is actually residing on the parent component, I can share
+between our sibling comps.
 
-// This changes to the Meteor / web-pack version of architecture actually
-// removes the Collection (and arguably the ability to alter, although
-// there is only whatever security preventions that were bothered to be
-// put in place...) entirely from the window of the UI. At least, you don't
-// get the data once it's been delivered. The bundle (and therefore, if
-// LocalState ever did decide to persist to Global -- and references to the
-// whole app were made available -- we would be able to perform (via git
-// or something similar) similar back stepping algorythms and diff
-// the current state againt some other state-- however since we've record the
-// whole thing, it's just a matter of asking for the value at that (whatever)
-// address, and it's made available).
+The difference in Mantra being that a copy of the entire store is seemingly
+not passed every time, however the Meteor object passed (via being a parent element)
+so eventually these props meet back up again, since a reference to the common object
+is always stored farther up.
+
+This changes to the Meteor / web-pack version of architecture actually
+removes the Collection (and arguably the ability to alter, although
+there is only whatever security preventions that were bothered to be
+put in place...) entirely from the window of the UI. At least, you don't
+get the data once it's been delivered. The bundle (and therefore, if
+LocalState ever did decide to persist to Global -- and references to the
+whole app were made available -- we would be able to perform (via git
+or something similar) similar back stepping algorithm and diff
+the current state against some other state-- however since we've record the
+whole thing, it's just a matter of asking for the value at that (whatever)
+address, and it's made available).
 
 
 
