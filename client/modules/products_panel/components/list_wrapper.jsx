@@ -1,5 +1,5 @@
 import React from 'react'
-import { List, ListSubHeader } from 'react-toolbox/lib/list';
+import { List, ListSubHeader } from 'react-toolbox/lib/list'
 import ProductList from '../containers/product_list'
 
 
@@ -8,6 +8,6 @@ const ListWrapper = () => (
     <ListSubHeader caption='Products' />
     <ProductList />
   </List>
-);
+)
 
-export default ListWrapper;
+export default ListWrapper

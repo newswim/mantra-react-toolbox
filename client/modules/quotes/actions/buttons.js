@@ -1,11 +1,13 @@
+import _ from 'lodash'
+
 export default {
 
-  cancelQuote({Meteor, LocalState, FlowRouter}) {
-    console.log("canceling...");
+  cancelQuote({FlowRouter}) {
+// console.log("canceling...")
     FlowRouter.go('/')
   },
 
-  createQuote({Meteor, LocalState, FlowRouter, clearAll}) {
+  createQuote({Meteor, LocalState, FlowRouter}) {
     const states = [
       'USER_INPUT_QUOTE',
       'USER_INPUT_CONTACT',
@@ -37,10 +39,10 @@ export default {
       runLength
     }
 
-    console.log(`creating new quote: ${newQuote.inputQuote}`);
+    console.log(`creating new quote: ${newQuote.inputQuote}`)
 
     // Try to create a new quote
-    console.log(newQuote.length)
+    console.log(_.values(newQuote))
 
     // check that the Quote isn't missing any fields
     // // shold probably use Yup for this . .
@@ -53,18 +55,19 @@ export default {
         states.forEach((state) => {
           LocalState.set(state, '')
         })
-        return
+        console.log('going back home')
+        return FlowRouter.go('/')
 
-      } catch (err){
+      } catch (err) {
         throw err
       }
     } else {
       LocalState.set('USER_INPUT_QUOTE_ERROR', `looks like you're missing some fields.`)
     }
     return
-
   },
-  clearErrors({Meteor, LocalState}) {
+  clearErrors({LocalState}) {
     // Clear any locally saved error statements
+    LocalState.set('USER_INPUT_QUOTE_ERROR', null)
   }
 }

@@ -20,3 +20,11 @@ $menu-item-hover-background: #6386B4;
 $list-item-hover-color: #6386B4;
 $list-subheader-font-size: 2.4rem;
 $color-text-secondary: #A6AAB0;
+$list-item-min-height-legend: 50px;
+
+
+// CLASS OVERRIDES
+
+.input {
+  font-weight: 100;
+}

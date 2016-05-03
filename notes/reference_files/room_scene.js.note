@@ -1,0 +1,182 @@
+import {_}                            from 'meteor/underscore'
+import {composer as baseRoomComposer} from './room'
+import {catchErrors}                  from '/client/modules/savi-errors'
+import {compose}                      from 'react-komposer'
+import {composeAll}                   from 'react-komposer'
+import {composeWithTracker}           from 'react-komposer'
+import DeviceButton                   from './device_button'
+import DeviceGrid                     from '../components/device_grid'
+import invariant                      from 'invariant'
+import React                          from 'react'
+import renderFooter                   from '../components/footer'
+import renderHeader                   from '../components/header'
+import renderRoom                     from '../components/room'
+import Tab                            from '../components/tab'
+import Tabs                           from '../components/tabs'
+import {useDeps}                      from 'react-simple-di'
+
+invariant(DeviceButton, 'DeviceButton is required')
+
+const version = '1.2.3-hf1'
+const licensedTo = 'Pablo\'s kitchen'
+
+export const composer = ({
+    Meteor,
+    Scenes,
+    height,
+    width,
+    sceneIdOrName,
+}, onData) => {
+    invariant(width, 'width is required')
+    invariant(height, 'height is required')
+    invariant(sceneIdOrName, 'sceneIdOrName is required')
+
+    if (Meteor.subscribe(Scenes.pub.index).ready()) {
+        const scene = Scenes.findOne({$or: [{
+            _id: sceneIdOrName,
+        },{
+            name: sceneIdOrName,
+        }]})
+
+        if (!scene) {
+            throw new Error(`Unable to find scene ${sceneIdOrName}`)
+        }
+
+        const renderSettings = {
+            style: {
+                width     : '100%',
+                height    : '100%',
+                background: 'blue',
+            },
+        }
+
+        const actionCount = getMaxItems(scene.actionTabs)
+        onData(null, {
+            actionCount,
+            displayCount: scene.displayIds.length,
+            height,
+
+            renderActions: (props) => (
+                renderDeviceGrid({
+                    ...props,
+                    deviceIds: _.pluck(_.sortBy(scene.actionTabs[0].items, 'rank'), 'deviceId'),
+                })
+            ),
+
+            renderActionTabs: (props) => (
+                <Tabs {...props}>
+                    {scene.actionTabs.map((tab, i) => (
+                        <Tab key={i} value={tab.name} label={tab.name} />
+                    ))}
+                </Tabs>
+
+            ),
+
+            renderDisplays: (props) => (
+                renderDeviceGrid({
+                    ...props,
+                    deviceIds: scene.displayIds,
+                })
+            ),
+
+            renderFooter: (props) => (
+                renderFooter({
+                    ...props,
+                    version,
+                    licensedTo
+                })
+            ),
+
+            renderHeader,
+            renderSources: () => {
+                return (
+                    <div {...renderSettings}>sources go here</div>
+                )
+            },
+
+            renderSpeakers: (props) => (
+                renderDeviceGrid({
+                    ...props,
+                    deviceIds: scene.speakerIds,
+                })
+            ),
+
+            sourceCount : getSourceCount(),
+            speakerCount: scene.speakerIds.length,
+            width,
+        })
+    }
+}
+
+const renderDeviceGrid = ({
+    deviceIds,
+    buttonHeight,
+    buttonWidth,
+    columnsMargin,
+    height,
+    paginationHeight,
+    rowsMargin,
+    width,
+}) => {
+    const settings = {
+        childHeight: buttonHeight,
+        childWidth : buttonWidth,
+        columnsMargin,
+        height,
+        paginationHeight,
+        rowsMargin,
+        width,
+    }
+
+    return (
+        <DeviceGrid {...settings}>
+            {deviceIds.map((deviceId, i) => {
+                const buttonSettings = {
+                    key: i,
+                    deviceId,
+                }
+
+                return (
+                    <DeviceButton {...buttonSettings} />
+                )
+            })}
+        </DeviceGrid>
+    )
+}
+
+/**
+ * Returns the maximum number of items in any one
+ * action tab
+ */
+const getMaxItems = (actionTabs) => (
+    _.reduce(
+        actionTabs || [],
+        (initial, tab) => (Math.max(initial, tab.items.length)),
+        0
+    )
+)
+
+/**
+ * Returns the maximum number of sources for the specified
+ * endpoints
+ */
+const getSourceCount = (endpointIds) => {
+    // TODO: finish this
+    return endpointIds ? 10 : 1
+}
+
+export const depsMapper = (context) => {
+    const {Meteor, Collections} = context
+    const {scenes: Scenes} = Collections
+
+    return {
+        Meteor,
+        Scenes,
+    }
+}
+
+export default composeAll(
+    compose(baseRoomComposer),
+    composeWithTracker(catchErrors(composer)),
+    useDeps(depsMapper)
+)(renderRoom)

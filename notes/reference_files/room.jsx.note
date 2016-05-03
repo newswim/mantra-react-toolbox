@@ -1,0 +1,164 @@
+import {catchErrors} from '/client/modules/savi-errors'
+import React         from 'react'
+import sizes         from '../lib/layoutSizes'
+
+const noop = () => {}
+
+const Room = ({
+    actionsHeight,
+    actionsWidth,
+    actionTabsHeight,
+    buttonHeight,
+    buttonWidth,
+    columnsMargin,
+    controlUIWidth,
+    controlUIHeight,
+    displaysHeight,
+    displaysWidth,
+    footerHeight,
+    headerHeight,
+    height,
+    paddingAmt,
+    paginationHeight,
+    renderActions = noop,
+    renderActionTabs = noop,
+    // renderControlUI = noop,
+    renderDisplays = noop,
+    renderFooter = noop,
+    renderHeader = noop,
+    renderSources = noop,
+    renderSpeakers = noop,
+    rowsMargin,
+    scale,
+    sourcesHeight,
+    sourcesWidth,
+    speakersHeight,
+    speakersWidth,
+    width,
+}) => {
+    const settings = {
+        className: 'savi-room-indigo_room',
+        style    : {
+            fontSize: `${sizes.FONT_SIZE * scale}px`,
+            height,
+            width,
+        },
+    }
+
+    const endpointsGroupSettings = {
+        className: 'endpoints-group',
+        style    : {
+            paddingLeft  : paddingAmt,
+            paddingRight : paddingAmt,
+            paddingTop   : rowsMargin,
+            paddingBottom: rowsMargin,
+        }
+    }
+
+    const renderEndpointDivider = () => (
+        <div className="endpoint-divider">|</div>
+    )
+
+    const centerSettings = {
+        className: 'center-group',
+        style    : {
+            paddingLeft  : paddingAmt,
+            paddingRight : paddingAmt,
+            paddingTop   : rowsMargin,
+            paddingBottom: rowsMargin,
+        }
+    }
+
+    const controlUISettings = {
+        className: 'control-ui',
+        style    : {
+            height    : controlUIHeight,
+            width     : controlUIWidth,
+            marginLeft: paddingAmt,
+        }
+    }
+
+    const commonGridSettings = {
+        buttonHeight,
+        buttonWidth,
+        columnsMargin,
+        paginationHeight,
+        rowsMargin,
+    }
+
+    const actionsSettings = {
+        className: 'actions',
+        style    : {
+            paddingLeft  : paddingAmt,
+            paddingRight : paddingAmt,
+            paddingTop   : rowsMargin,
+            paddingBottom: rowsMargin,
+        }
+    }
+
+    return (
+        <div {...settings}>
+            {renderHeader({
+                className: 'header',
+                height   : headerHeight,
+            })}
+
+            <div {...endpointsGroupSettings}>
+                {renderDisplays({
+                    height: displaysHeight,
+                    width : displaysWidth,
+                    ...commonGridSettings,
+                })}
+
+                {renderEndpointDivider()}
+
+                {renderSpeakers({
+                    height: speakersHeight,
+                    width : speakersWidth,
+                    ...commonGridSettings,
+                })}
+            </div>
+
+            <div {...centerSettings}>
+                {renderSources({
+                    height: sourcesHeight,
+                    width : sourcesWidth,
+                    ...commonGridSettings,
+                })}
+
+                <div {...controlUISettings}>
+                </div>
+            </div>
+
+            {(() => {
+                if (actionTabsHeight) {
+                    return renderActionTabs({
+                        className: 'action-tabs',
+                        height   : actionTabsHeight,
+                    })
+                }
+            })()}
+
+            {(() => {
+                if (actionsHeight) {
+                    return (
+                        <div {...actionsSettings}>
+                            {renderActions({
+                                height: actionsHeight,
+                                width : actionsWidth,
+                                ...commonGridSettings,
+                            })}
+                        </div>
+                    )
+                }
+            })()}
+
+            {renderFooter({
+                className: 'footer',
+                height   : footerHeight,
+            })}
+        </div>
+    )
+}
+
+export default catchErrors(Room)

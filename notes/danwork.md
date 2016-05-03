@@ -139,3 +139,36 @@ And on that note, I'm going to hold off using React-Select until some of the
 - Another infinite list component -> https://github.com/orgsync/react-list
 - Need to click on a Quote and go to route with that Quote's information
 - (click) {quote} -> go('quote/:{quote.quoteId}') -> find quote(id) + associated docs
+
+> May 2nd
+
+Linter
+- Getting into ESLint, for now I'm allowing all `console.log` statements, but remember
+that they'll need to be removed in the future.
+- same for `no-multi-spaces` rule.
+- same for `camelcase`
+- increased max line length
+
+Immediate goals:
+- Finish ProductList component, just a big smart component for now
+- Create some relational look ups so that we can add products to a quote.
+- create "add product" component
+- MDG has a Validated Method package which might combine the Schema and Form validation
+I've been needing - [examples in the tests](https://github.com/meteor/validated-method/blob/master/validated-method-tests.js).
+
+##### Notes
+
+Validation of forms and methods has been contentious, but MDG seems to have settled
+on a few packages which play nicely with Simple-Schema. For now, I'll try to keep
+as closely as possible to Meteor conventions, esp. since several parts of this stack
+are on a first-encounter basis (React, Mantra, ES6...).
+
+The other major hurdle right now is publishing relational data. Publish-Composite has
+not been updated in some time, but it still seems to be fairly widely used, and gives
+are fairly straight-forward way of nesting publications. However, just following the
+docs and updating a publication whenever a document changes (via .added or .changed)
+should suffice for now.
+
+Review these packages for patterns:
+- https://github.com/meteor/validated-method
+- https://github.com/meteor/validation-error

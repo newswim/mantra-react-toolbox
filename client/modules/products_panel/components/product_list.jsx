@@ -1,34 +1,44 @@
 import React from 'react'
-import { List, ListSubHeader, ListDivider, ListCheckbox } from 'react-toolbox/lib/list'
 import { BaseComponent } from '/client/modules/react_utils'
-import {Button} from 'react-toolbox/lib/button'
 import Product from './product.jsx'
-import styles from './product.mss'
+import Checkbox from './checkbox.jsx'
+import AddButton from './add_button.jsx'
+import styles from './product.scss'
 
 class ProductList extends BaseComponent {
   constructor(props) {
     super(props)
-    this.bindHandlers('handleDelete')
+    this.bindHandlers('handleDelete', 'handleInfo')
   }
 
-  handleDelete (id) {
+  handleDelete(id) {
     const { _execute_delete } = this.props
-    const { products } = this.props
+    // const { products } = this.props
     // console.log(_execute_delete)
     // console.log(products);
     _execute_delete(id)
+  }
+
+  // TODO: Show an overlay with details on the current product
+  handleInfo(id) {
+    console.log(id)
   }
 
   render() {
     const { products } = this.props
 
     return (
-      <div className={styles.productWrap}>
+      <div>
           {products.length === 0 ? <p>I didn't find any products!</p> : null}
           {products.map(product => (
-            <div key={product._id}>
-              <Product product={product} />
-              <button onClick={() => this.handleDelete(product._id)}>Delete</button>
+            <div key={product._id} onClick={() => console.log(`you clicked ${product._id}`)} className={styles.card_wrapper}>
+              <div className={styles.item_wrapper}>
+                <AddButton />
+                <Checkbox />
+                <Product product={product} className={styles.blueBg}/>
+                <div className={styles.product_info} onClick={() => this.handleDelete(product._id)}>Delete</div>
+                <div className={styles.product_info} onClick={() => this.handleInfo(product._id)}>Info</div>
+              </div>
             </div>
           ))}
       </div>
@@ -37,7 +47,7 @@ class ProductList extends BaseComponent {
 
 }
 
-export default ProductList;
+export default ProductList
 
 
 /*

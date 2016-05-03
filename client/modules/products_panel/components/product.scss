@@ -1,0 +1,55 @@
+.card_wrapper {
+  display:table;    // just so i don't have to set a width
+  margin-bottom: 8px;
+  box-shadow: 2px 2px 5px -1px black;
+}
+
+.item_wrapper {
+  display:inline-flex;
+  justify-content: space-around;
+}
+
+.icon {
+  color: white;
+}
+
+.product_detail {
+  background-color: #6386B4;
+  width: 340px;
+}
+
+.product_info {
+  background-color: #6D94C7;
+  width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 12px;
+}
+
+.checkBox {
+  background-color: #62687A;
+  width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 4px;
+}
+
+.addButton {
+  background-color: #68C6BE;
+  color: white;
+  width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 4px;
+  span {
+    font-size:2.7rem;
+  }
+}
+
+.blueBg {
+  background-color: #6386B4;
+}
