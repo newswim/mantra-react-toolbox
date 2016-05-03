@@ -15,7 +15,7 @@
 
 .product_detail {
   background-color: #6386B4;
-  width: 340px;
+  width: 220px;
 }
 
 .product_info {
@@ -26,6 +26,8 @@
   justify-content: center;
   color: white;
   font-size: 12px;
+  cursor: pointer;
+  border-right: 1px solid #6386B4;
 }
 
 .checkBox {
@@ -52,4 +54,8 @@
 
 .blueBg {
   background-color: #6386B4;
+}
+
+.listWrapper {
+  margin-right: 10px;
 }

@@ -6,13 +6,58 @@ export default function () {
   Meteor.methods({
     'quotes.createNew'(newQuote) {
       check(newQuote, Object)
-      const createdAt = new Date()
-      const quote = {newQuote, createdAt}
-      const insertQuote = Quotes.insert(quote);
 
-      console.log(`Added ${quote.newQuote.inputQuote} to Quotes`)
+      const dateCreated = new Date()
 
-      return insertQuote
+      check(dateCreated, Date)
+
+      const {
+        opptyName,
+        contactName,
+        orgName,
+        location,
+        taxable,
+        laborRate,
+        projMgmtPct,
+        defLength
+      } = newQuote
+
+      console.log('hi', opptyName)
+
+      check(opptyName, String)
+      check(contactName, String)
+      check(orgName, String)
+      check(location, String)
+      check(taxable, String)
+      check(laborRate, String)
+      check(projMgmtPct, String)
+      check(defLength, String)
+
+      const quote = {
+        dateCreated,    // add date
+        opptyName,
+        contactName,
+        orgName,
+        location,
+        taxable,
+        laborRate,
+        projMgmtPct,
+        defLength
+      }
+
+      console.log(quote)
+
+      try {
+        const insertQuote = Quotes.insert(quote);
+
+        console.log(`Added ${opptyName} to Quotes`)
+
+        return insertQuote
+
+      } catch (err) {
+        throw err
+      }
+
     }
   });
 }

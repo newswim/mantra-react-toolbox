@@ -1,10 +1,3 @@
-@import "~react-toolbox/lib/input/style.scss";
-
-// Specific overrides for React Toolbox styles
-._node_modules_react_toolbox_lib_input__style__counter {
-  color: rgba(250, 250, 250, 0.26);
-}
-
 ._form__wrapper {
   width: 75%;
   margin-right: auto;
@@ -38,4 +31,9 @@
   height: 2rem;
   margin-left:auto;
   margin-right:auto;
+}
+
+.quoteLayoutWrap {
+  display: flex;
+  justify-content: space-between;
 }

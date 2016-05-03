@@ -1,5 +1,29 @@
 import _ from 'lodash'
 
+/* QUOTE FIELDS
+
+REQUIRED:
+dateCreated
+opptyName
+contactName
+orgName
+location
+taxable
+laborRate
+projMgmtPct
+defLength
+
+OPTIONAL:
+taxRate
+assignedTo
+quoteStage
+marginPct
+active
+defAdHoc
+taxedOnCost
+
+*/
+
 export default {
 
   cancelQuote({FlowRouter}) {
@@ -18,34 +42,49 @@ export default {
       'USER_INPUT_PROJECT_MGMT',
       'USER_INPUT_RUN_LENGTH',
     ]
-    const inputQuote   = LocalState.get('USER_INPUT_QUOTE')
-    const inputContact = LocalState.get('USER_INPUT_CONTACT')
-    const inputOrg     = LocalState.get('USER_INPUT_ORG')
-    const inputLoc     = LocalState.get('USER_INPUT_LOC')
+
+    const opptyName    = LocalState.get('USER_INPUT_QUOTE')
+    const contactName  = LocalState.get('USER_INPUT_CONTACT')
+    const orgName      = LocalState.get('USER_INPUT_ORG')
+    const location     = LocalState.get('USER_INPUT_LOC')
     // default options
     const taxable      = LocalState.get('USER_INPUT_TAXABLE')
-    const labor        = LocalState.get('USER_INPUT_LABOR')
-    const projectMgmt  = LocalState.get('USER_INPUT_PROJECT_MGMT')
-    const runLength    = LocalState.get('USER_INPUT_RUN_LENGTH')
+    const laborRate    = LocalState.get('USER_INPUT_LABOR')
+    const projMgmtPct  = LocalState.get('USER_INPUT_PROJECT_MGMT')
+    const defLength    = LocalState.get('USER_INPUT_RUN_LENGTH')
+
+    check(opptyName, String)
+    check(contactName, String)
+    check(orgName, String)
+    check(location, String)
+    check(taxable, String)
+    check(laborRate, String)
+    check(projMgmtPct, String)
+    check(defLength, String)
 
     const newQuote = {
-      inputQuote,
-      inputContact,
-      inputOrg,
-      inputLoc,
+      opptyName,
+      contactName,
+      orgName,
+      location,
       taxable,
-      labor,
-      projectMgmt,
-      runLength
+      laborRate,
+      projMgmtPct,
+      defLength
     }
 
-    console.log(`creating new quote: ${newQuote.inputQuote}`)
+    console.log(`creating new quote: ${opptyName}`)
 
     // Try to create a new quote
     console.log(_.values(newQuote))
 
+
+    Meteor.call('quotes.createNew', newQuote)
+
+    /*
+
     // check that the Quote isn't missing any fields
-    // // shold probably use Yup for this . .
+    // // should probably use Yup for this . .
     if (Object.keys(newQuote).length > 4) {
       try {
         Meteor.call('quotes.createNew', newQuote)
@@ -64,7 +103,9 @@ export default {
     } else {
       LocalState.set('USER_INPUT_QUOTE_ERROR', `looks like you're missing some fields.`)
     }
-    return
+
+    */
+
   },
   clearErrors({LocalState}) {
     // Clear any locally saved error statements

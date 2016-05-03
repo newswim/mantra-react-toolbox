@@ -1,6 +1,7 @@
-import {ProductHistory} from '/lib/collections';
-import {Meteor} from 'meteor/meteor';
-import {check} from 'meteor/check';
+import {ProductHistory} from '/lib/collections'
+import { ValidatedMethod } from 'meteor/mdg:validated-method'
+import {Meteor} from 'meteor/meteor'
+import {check} from 'meteor/check'
 
 // We can either keep all of the data on the singular object
 // and since we're inserting here, it seems logical to
@@ -68,5 +69,5 @@ export default function () {
 
       return insertingProduct
     }
-  });
+  })
 }

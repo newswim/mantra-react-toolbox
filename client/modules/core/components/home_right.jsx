@@ -17,7 +17,7 @@ class HomeRightBar extends BaseComponent {
             quotes.map(quote => (
               <QuoteItem
                 key={quote._id}
-                quote={quote.newQuote}
+                quote={quote}
                 id={quote._id}
               />
             ))

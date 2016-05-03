@@ -9,6 +9,7 @@ export default {
 
   addNewProduct({Meteor, LocalState, Collections}, newProduct) {
 
+
     // Call Meteor method insert new product
     // like Meteor.call('products.add', newProduct)
 
@@ -26,9 +27,8 @@ export default {
     }
 
     try {
-      Meteor.call('product.create',
-              name = newProduct.name,
-              vendor = newProduct.vendor)
+      check(newProduct, Object)
+      Meteor.call('product.create', newProduct)
     }
     catch (error) {console.log(error.message)}
 

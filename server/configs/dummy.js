@@ -37,10 +37,20 @@ currentDate
 
   product_table.map((product) => {
     let doc = {
-      mfr_name: product.manufacturerName,
-      name: product.name,
+      mfrName: product.manufacturerName,
+      productName: product.name,
       description: product.description,
-      purchase_price: product.purchasePrice
+      purchasePrice: product.purchasePrice,
+      partNumber:       "Dummy field",
+      productType:      "Dummy field",
+      vendorName:       "Dummy field",
+      vendorPartNumber: "Dummy field",
+      perFoot:          "Dummy field",
+      listPrice:        "Dummy field",
+      laborUnit:        "Dummy field",
+      website:          "Dummy field",
+      dateLastEdited:   "Dummy field",
+      active:           "Dummy field",
     }
     Products.insert(doc)
   })

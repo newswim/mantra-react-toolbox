@@ -15,7 +15,7 @@ class ProductList extends BaseComponent {
     const { _execute_delete } = this.props
     // const { products } = this.props
     // console.log(_execute_delete)
-    // console.log(products);
+    // console.log(products)
     _execute_delete(id)
   }
 
@@ -37,7 +37,7 @@ class ProductList extends BaseComponent {
                 <Checkbox />
                 <Product product={product} className={styles.blueBg}/>
                 <div className={styles.product_info} onClick={() => this.handleDelete(product._id)}>Delete</div>
-                <div className={styles.product_info} onClick={() => this.handleInfo(product._id)}>Info</div>
+                <div className={styles.product_info}>Info</div>
               </div>
             </div>
           ))}

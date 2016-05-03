@@ -6,7 +6,6 @@ import coreModule from './modules/core';
 import react_utilsModule from './modules/react_utils';
 import loginModule from './modules/login';
 import quotesModule from './modules/quotes';
-import quoteModule from './modules/quote';
 import products_panelModule from './modules/products_panel';
 import new_productModule from './modules/new_product';
 
@@ -22,5 +21,4 @@ app.loadModule(loginModule);
 app.loadModule(quotesModule);
 app.loadModule(new_productModule);
 app.loadModule(products_panelModule);
-app.loadModule(quoteModule);
 app.init();

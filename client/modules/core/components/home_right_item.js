@@ -7,7 +7,7 @@ import { ListItem } from 'react-toolbox/lib/list'
 const QuoteItem = ({ quote, id }) => (
   <ListItem
     className={style._single_quote_item}
-    caption={quote.inputQuote}
+    caption={quote.opptyName}
     onClick={() => FlowRouter.go(`/quote/${id}`)}
   />
 );

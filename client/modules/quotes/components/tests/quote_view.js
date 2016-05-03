@@ -1,8 +1,8 @@
 const {describe, it} = global;
 import {expect} from 'chai';
 import {shallow} from 'enzyme';
-import Main from '../main';
+import QuoteView from '../quote_view';
 
-describe('quote.components.main', () => {
+describe('quotes.components.quote_view', () => {
   it('should do something');
 });

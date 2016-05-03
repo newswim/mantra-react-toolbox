@@ -5,6 +5,27 @@ import DropdownMenu from '../containers/dropdown_menu'
 import FormButtons from '../containers/buttons'
 import styles from './quotes.scss'
 
+/* QUOTE FIELDS
+
+quoteId     // -> '_id' from Mongo
+opptyName
+assignedTo
+orgName
+contactName
+projMgmtPct
+taxRate
+dateCreated
+quoteStage
+marginPct
+laborRate
+defLength
+taxable
+active
+defAdHoc
+taxedOnCost
+
+*/
+
 export class Quotes extends BaseComponent {
   constructor (props) {
     super(props)

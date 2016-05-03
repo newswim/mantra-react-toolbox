@@ -4,10 +4,14 @@ import {Meteor} from 'meteor/meteor'
 import {check} from 'meteor/check'
 
 export default function () {
+
+  // This is a limited publication, only for label information contained on the
+  // ProductList component. A separate publication will handle sending ALL of
+  // the product data to client
   Meteor.publish('products.list', function () {
     const selector = {}
     const options = {
-      fields: {_id: 1, mfr_name: 1, name: 1,  description: 1,  purchase_price: 1},
+      fields: {_id: 1, productName: 1, mfrName: 1,  description: 1},
       sort: {createdAt: -1},
       // limit: 10
     }
