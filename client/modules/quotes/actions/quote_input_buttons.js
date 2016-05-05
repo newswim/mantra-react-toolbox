@@ -73,15 +73,10 @@ export default {
       defLength
     }
 
-    console.log(`creating new quote: ${opptyName}`)
+console.log(`creating new quote: ${opptyName}`)
 
     // Try to create a new quote
-    console.log(_.values(newQuote))
-
-
-    Meteor.call('quotes.createNew', newQuote)
-
-    /*
+console.log(newQuote)
 
     // check that the Quote isn't missing any fields
     // // should probably use Yup for this . .
@@ -91,10 +86,10 @@ export default {
         //
         // Reset local state somehow
         //
-        states.forEach((state) => {
+        states.map((state) => {
           LocalState.set(state, '')
         })
-        console.log('going back home')
+console.log('going back home')
         return FlowRouter.go('/')
 
       } catch (err) {
@@ -103,9 +98,6 @@ export default {
     } else {
       LocalState.set('USER_INPUT_QUOTE_ERROR', `looks like you're missing some fields.`)
     }
-
-    */
-
   },
   clearErrors({LocalState}) {
     // Clear any locally saved error statements

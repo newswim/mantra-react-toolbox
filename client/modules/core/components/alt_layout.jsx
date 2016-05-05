@@ -5,6 +5,7 @@ import { Layout, NavDrawer, Panel, Sidebar } from 'react-toolbox'
 import { BaseComponent } from '/client/modules/react_utils'
 import Helmet from 'react-helmet'
 import { Grid } from 'react-virtualized'
+import InputTest from './stateful_input.jsx'
 
 
 // Grid data as an array of arrays
@@ -66,6 +67,8 @@ class AltLayout extends BaseComponent {
                     <h1>Main Content</h1>
                       <div>
                         <p>CONTENT</p>
+                        {/* Stateful Input */}
+                        <InputTest />
                       </div>
                     <Checkbox label='Pin drawer' checked={drawerPinned.get()} onChange={this.toggleDrawerPinned} />
                     <Checkbox label='Show sidebar' checked={sidebarPinned.get()} onChange={this.toggleSidebar} />

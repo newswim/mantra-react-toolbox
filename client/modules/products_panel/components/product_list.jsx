@@ -28,7 +28,7 @@ class ProductList extends BaseComponent {
     const { products } = this.props
 
     return (
-      <div>
+      <div className={styles._product_list_wrapper}>
           {products.length === 0 ? <p>I didn't find any products!</p> : null}
           {products.map(product => (
             <div key={product._id} onClick={() => console.log(`you clicked ${product._id}`)} className={styles.card_wrapper}>
@@ -50,14 +50,9 @@ class ProductList extends BaseComponent {
 export default ProductList
 
 
-/*
-
-NOTE:
+/* NOTE:
 
 calling a function w/ onClick directly will execute that function every time
 the component renders. To prevent this, pass a function to the handler.
 
-for reference: http://stackoverflow.com/questions/33846682/react-onclick-fuction-fires-on-render
-
-
-*/
+for reference: http://stackoverflow.com/questions/33846682/react-onclick-fuction-fires-on-render */

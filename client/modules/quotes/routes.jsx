@@ -3,8 +3,9 @@ import {mount} from 'react-mounter';
 
 import MainLayout from '/client/modules/core/components/main_layout.jsx';
 
-import Quotes from './containers/quotes'
+import Quotes from './containers/old_quotes_container'
 import QuoteView from './components/quote_view'
+import QuoteInputLayout from './containers/quote_input_layout'
 
 export default function (injectDeps, {FlowRouter}) {
   const MainLayoutCtx = injectDeps(MainLayout);
@@ -14,6 +15,15 @@ export default function (injectDeps, {FlowRouter}) {
       action() {
         mount(MainLayoutCtx, {
           content: () => (<Quotes />)
+        });
+      }
+    });
+
+    FlowRouter.route('/newQuotesComp', {
+      name: 'quotes',
+      action() {
+        mount(MainLayoutCtx, {
+          content: () => (<QuoteInputLayout />)
         });
       }
     });

@@ -14,7 +14,8 @@ export default function () {
     return Quotes.find(selector, options);
   });
 
-  Meteor.publish('quotes.all', function (quotesId) {
-    return Quotes.find({});
+  Meteor.publish('quotes.one', function (quoteId) {
+    check(quoteId, String)
+    return Quotes.find({_id: quoteId});
   });
 }

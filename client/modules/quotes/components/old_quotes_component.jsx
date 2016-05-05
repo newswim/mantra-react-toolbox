@@ -26,7 +26,7 @@ taxedOnCost
 
 */
 
-export class Quotes extends BaseComponent {
+export class OldQuotesForm extends BaseComponent {
   constructor (props) {
     super(props)
     this.bindHandlers('handleChange')
@@ -55,7 +55,13 @@ export class Quotes extends BaseComponent {
   }
 
   getQuotes() {
-    const { error, inputQuote, inputContact, inputOrg, inputLoc } = this.props
+    const {
+      error,
+      inputQuote,
+      inputContact,
+      inputOrg,
+      inputLoc
+    } = this.props
     return [
       { label: "Quote Name:",  ref: "name",    locState: "inputQuote", inputVal: inputQuote },
       { label: "Contact",      ref: "contact", locState: "inputContact", inputVal: inputContact },
@@ -88,7 +94,7 @@ export class Quotes extends BaseComponent {
     console.log(`from handler: ${locState}, ${event}`)
     // let thingTyped = event
     const { inputValue } = this.props
-
+    // update LocalState
     inputValue(locState, event)
   }
 }

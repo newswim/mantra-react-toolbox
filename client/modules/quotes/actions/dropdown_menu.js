@@ -1,5 +1,5 @@
 export default {
-  setDefaultOptions({Meteor, LocalState}, name, value) {
+  updateLocalState({Meteor, LocalState}, name, value) {
     console.log(`from action: ${name}: ${value}`)
     switch (name) {
       case "taxable":
@@ -16,7 +16,6 @@ export default {
 
   },
 
-  // e.g. clear local state
   clearErrors({LocalState}) {
    return LocalState.set('ERROR', null);
   },

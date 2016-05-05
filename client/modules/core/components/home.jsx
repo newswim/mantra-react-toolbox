@@ -27,7 +27,7 @@ class Home extends BaseComponent {
               display: 'inline-block',
               margin: '10px'
             }} >
-           <div className={styles.cardText} onClick={() => this.handleClick('/quotes')}>
+           <div className={styles.cardText} onClick={() => this.handleClick('/newQuotesComp')}>
              <h4>New Quote</h4>
            </div>
          </Card>

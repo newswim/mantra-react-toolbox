@@ -1,6 +1,6 @@
 import {useDeps, composeAll, composeWithTracker, compose} from 'mantra-core';
 import {catchErrors}    from '/client/modules/savi-errors'
-import { Quotes } from '../components/quotes.jsx';
+import { OldQuotesForm } from '../components/old_quotes_component.jsx';
 
 export const composer = ({context}, onData) => {
   const {LocalState} = context();
@@ -44,7 +44,7 @@ export const depsMapper = (context, actions) => ({
 export default composeAll(
   composeWithTracker(composer),
   useDeps(depsMapper)
-)(Quotes);
+)(OldQuotesForm);
 
 
 // INPUT FIELDS NEEDING STATE

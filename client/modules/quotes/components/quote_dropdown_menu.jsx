@@ -21,54 +21,60 @@ const menus = [
   {
     label: "Taxable",
     name: "taxable",
-    options: ['Yes', 'Yes (on cost)', 'No']
+    options: ['', 'Yes', 'Yes (on cost)', 'No']
   },
   {
     label: "Labor Rate",
     name: "labor",
-    options: ['75', '85', '90', '95']
+    options: ['', '75', '85', '90', '95']
   },
   {
     label: "Project Management",
     name: "projectMgmt",
-    options: ["5% (Standard)", "7%", "9%"]
+    options: ['', "5% (Standard)", "7%", "9%"]
   },
   {
     label: "Run Length",
     name: "runLength",
-    options: ["100", "135", "150"]
+    options: ['', "100", "135", "150"]
   }
 ]
 
 class DropdownMenu extends BaseComponent {
   constructor (props) {
     super(props)
+    this.state = {}
     this.bindHandlers('handleChange')
   }
 
   render() {
     return (
       <div className={style.default__options__wrap}>
+
         {menus.map((menu) => (
           <div className={style.select__wrapper} key={menu.name}>
             <label>{menu.label}</label>
-            <select name={menu.name} onChange={(val) => this.handleChange(val)}>
+            <select name={menu.name} onChange={(nativeEvent) => this.handleChange(nativeEvent)}>
               {menu.options.map((val) => (
-                <option value={val} key={val} ref={val} >{val}</option>
+                <option value={val} key={val}>{val}</option>
               ))}
             </select>
           </div>
         ))}
+
       </div>
     )
   }
 
   handleChange(e) {
     console.log(`${e.target.name}: ${e.target.value}`)
-    const {setDefault} = this.props
+
+    // TODO: update this.state
+
+    const { updateLocalState } = this.props
     const name = e.target.name
     const value = e.target.value
-    setDefault(name, value)
+    updateLocalState(name, value)
   }
 
 }
