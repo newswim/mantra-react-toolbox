@@ -3,6 +3,7 @@ import ListWrapper from '/client/modules/products_panel/components/list_wrapper'
 import { BaseComponent } from '/client/modules/react_utils'
 import QuoteTopbar from '../containers/quote_topbar'
 import QuoteTable from '../containers/quote_table'
+import QuoteSections from './quote_sections.jsx'
 import style from './quotes.scss'
 
 import { AppBar, Checkbox, IconButton, Button } from 'react-toolbox'
@@ -43,9 +44,7 @@ class QuoteView extends BaseComponent {
                     permanentAt='xxxl'
                     onOverlayClick={ this.toggleDrawerActive }
                     width='wide'>
-                    <p>
-                        ADD SECTIONS
-                    </p>
+                    <QuoteSections />
                 </NavDrawer>
                 <Panel>
                     <AppBar>
@@ -55,14 +54,13 @@ class QuoteView extends BaseComponent {
                         <Button icon='add' onClick={ this.toggleSidebar } primary={true} floating />
                       </div>
                     </AppBar>
-                    <div style={{ flex: 1, overflowY: 'auto', padding: '1.8rem' }}>
-                        <h1>Main Content</h1>
+                    <div style={{ flex: 1, overflowY: 'auto', padding: '1.8rem', backgroundColor: 'white'}}>
                         <h3>IM QUOTE: {quoteId}</h3>
                         <Checkbox label='Pin drawer' checked={this.state.drawerPinned} onChange={this.toggleDrawerPinned} />
                         <Checkbox label='Add a product' checked={this.state.sidebarPinned} onChange={this.toggleSidebar} />
                         {/* Render table */}
                         <QuoteTable />
-                        
+
                     </div>
                 </Panel>
                 <Sidebar pinned={ this.state.sidebarPinned } width={ 7 } scrollY={ true }>

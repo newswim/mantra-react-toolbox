@@ -1,0 +1,20 @@
+._quote_section_wrapper {
+  display:flex;
+  flex-direction: column;
+  color: white;
+}
+._quote_section_header {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  height: 7rem;
+  background-color: #585D6C;
+}
+._quote_section_button {
+  align-items: center;
+  justify-content: center;
+  height: 9rem;
+  display: flex;
+  background-color: #9292C7;
+  margin: 1rem;
+}

@@ -6,6 +6,9 @@ import style from './product.scss'
 
 const ListWrapper = () => (
   <div className={style.listWrapper}>
+    <div className={style._search_wrapper}>
+      <input placeholder="Search..." type="text" className={style._product_search} />
+    </div>
     <List>
       <ListSubHeader caption='Products' />
       <ProductList />

@@ -1,6 +1,6 @@
 import React from 'react';
 import { BaseComponent } from '/client/modules/react_utils'
-import Input  from 'react-toolbox/lib/input'
+import Input from 'react-toolbox/lib/input'
 import DropdownMenu from '../containers/dropdown_menu'
 import FormButtons from '../containers/buttons'
 import styles from './quotes.scss'

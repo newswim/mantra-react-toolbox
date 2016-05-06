@@ -22,17 +22,17 @@ active,   //bool
 currentDate
 */
   const product_table = [
-    { manufacturerName: 'Bora Gear', name: 'KON-101',description: '1U Rack Cooling Fan', purchasePrice: 119.00 },
-    { manufacturerName: 'BoraGear', name: 'EGB',description: 'Egor Tabs', purchasePrice: 0.40 },
-    { manufacturerName: 'Channel Vision ', name: 'HS-16',description: '16-Way Splitter/Combiner', purchasePrice: 35.87 },
-    { manufacturerName: 'Channel Vision ', name: 'CVT-40BID',description: '5-1000mhz RF Amplifier 40DB Gain', purchasePrice: 172.80 },
-    { manufacturerName: 'Control4', name: 'C4-HC800-BL',description: 'Master Dual Core 1.8GHz Processor Controller', purchasePrice: 900.00 },
-    { manufacturerName: 'Control4', name: 'C4-1UREK-B',description: 'HC-800 Rack Ear Kit', purchasePrice: 23.40 },
-    { manufacturerName: 'Control4', name: 'C4-IOX-E-B',description: 'IO Extender', purchasePrice: 300.005 },
-    { manufacturerName: 'Control4', name: 'C4-CBLIR-BULK',description: 'Single IR Flasher', purchasePrice: 4.00 },
-    { manufacturerName: 'Video Storm', name: 'CMX3838A2',description: 'Audio Matrix Switch', purchasePrice: 750.00 },
-    { manufacturerName: 'Video Storm', name: 'NAB100',description: 'Network Card', purchasePrice: 399.00 },
-    { manufacturerName: 'Video Storm', name: 'CRM ',description: 'CRM Audio Matrix Rack Mount Ears', purchasePrice: 23.00 }
+    { manufacturerName: 'Bora Gear', name: 'KON-101', description: '1U Rack Cooling Fan', purchasePrice: 119.00 },
+    { manufacturerName: 'BoraGear', name: 'EGB', description: 'Egor Tabs', purchasePrice: 0.40 },
+    { manufacturerName: 'Channel Vision ', name: 'HS-16', description: '16-Way Splitter/Combiner', purchasePrice: 35.87 },
+    { manufacturerName: 'Channel Vision ', name: 'CVT-40BID', description: '5-1000mhz RF Amplifier 40DB Gain', purchasePrice: 172.80 },
+    { manufacturerName: 'Control4', name: 'C4-HC800-BL', description: 'Master Dual Core 1.8GHz Processor Controller', purchasePrice: 900.00 },
+    { manufacturerName: 'Control4', name: 'C4-1UREK-B', description: 'HC-800 Rack Ear Kit', purchasePrice: 23.40 },
+    { manufacturerName: 'Control4', name: 'C4-IOX-E-B', description: 'IO Extender', purchasePrice: 300.005 },
+    { manufacturerName: 'Control4', name: 'C4-CBLIR-BULK', description: 'Single IR Flasher', purchasePrice: 4.00 },
+    { manufacturerName: 'Video Storm', name: 'CMX3838A2', description: 'Audio Matrix Switch', purchasePrice: 750.00 },
+    { manufacturerName: 'Video Storm', name: 'NAB100', description: 'Network Card', purchasePrice: 399.00 },
+    { manufacturerName: 'Video Storm', name: 'CRM ', description: 'CRM Audio Matrix Rack Mount Ears', purchasePrice: 23.00 }
   ]
 
   product_table.map((product) => {
