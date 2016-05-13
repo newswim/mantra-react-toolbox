@@ -4,7 +4,15 @@ import {useDeps, composeAll, composeWithTracker, compose} from 'mantra-core'
 export const composer = ({context}, onData) => {
   const {Meteor, Collections} = context();
 
-  onData(null, {});
+  if (Meteor.subscribe('users.current').ready()) {
+      const userName = Meteor.users.findOne().username
+      onData(null, { userName });
+  } else {
+    const userName = 'getting username...'
+    onData(null, { userName });
+  }
+
+
 };
 
 export const depsMapper = (context, actions) => ({

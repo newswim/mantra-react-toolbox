@@ -1,5 +1,5 @@
 import React  from 'react'
-import styles from './input_login.mss'
+import styles from './input_login.scss'
 import Input  from 'react-toolbox/lib/input';
 import { BaseComponent } from '/client/modules/react_utils'
 

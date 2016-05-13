@@ -17,7 +17,7 @@ export default {
     // This was going too fast for view to be rendered
     Meteor.setTimeout(() => {
       FlowRouter.go('/')
-    }, 1000)
+    }, 300)
 
 
   },
@@ -30,7 +30,7 @@ export default {
     console.log("from action: ", thingTyped)
     return LocalState.set('USER_INPUT_VALUE', ...thingTyped);
   },
-  
+
   passValue({LocalState}, ...typeType) {
     console.log("from action: ", typeType)
     return LocalState.set('USER_PASS_VALUE', ...typeType);

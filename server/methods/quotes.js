@@ -5,36 +5,21 @@ import {check} from 'meteor/check';
 export default function () {
   Meteor.methods({
     'quotes.createNew'(newQuote) {
-      check(newQuote, Object)
-
       const dateCreated = new Date()
-
-      check(dateCreated, Date)
-
-      const {
-        opptyName,
-        contactName,
-        orgName,
-        location,
-        taxable,
-        laborRate,
-        projMgmtPct,
-        defLength
+      const { opptyName, contactName, orgName, location, taxable, laborRate, projMgmtPct, defLength
       } = newQuote
-
-      console.log('hi', opptyName)
-
-      check(opptyName, String)
-      check(contactName, String)
-      check(orgName, String)
-      check(location, String)
-      check(taxable, String)
-      check(laborRate, String)
-      check(projMgmtPct, String)
-      check(defLength, String)
+      check(newQuote,     Object)
+      check(dateCreated,  Date)
+      check(opptyName,    String)
+      check(contactName,  String)
+      check(orgName,      String)
+      check(location,     String)
+      check(taxable,      String)
+      check(laborRate,    String)
+      check(projMgmtPct,  String)
+      check(defLength,    String)
 
       const quote = {
-        dateCreated,    // add date
         opptyName,
         contactName,
         orgName,
@@ -42,22 +27,17 @@ export default function () {
         taxable,
         laborRate,
         projMgmtPct,
-        defLength
+        defLength,
+        dateCreated,    // add date
       }
-
-      console.log(quote)
 
       try {
         const insertQuote = Quotes.insert(quote);
-
-        console.log(`Added ${opptyName} to Quotes`)
-
+        console.log(`Adding ${opptyName} to Quotes`)
         return insertQuote
-
       } catch (err) {
         throw err
       }
-
     }
   });
 }

@@ -12,7 +12,7 @@ export const composer = ({context}, onData) => {
     LocalState.set('USER_INPUT_CONTACT', '')
   }
   if (!LocalState.get('USER_INPUT_ORG')) {
-    LocalState.set('USER_INPUTUSER_INPUT_ORG_VALUE', '')
+    LocalState.set('USER_INPUT_ORG', '')
   }
   if (!LocalState.get('USER_INPUT_LOC')) {
     LocalState.set('USER_INPUT_LOC', '')

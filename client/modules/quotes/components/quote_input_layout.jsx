@@ -14,7 +14,7 @@ class QuoteInputLayout extends BaseComponent {
       org:      '',
       loc:      '',
     }
-    this.bindHandlers('handleChange')
+    this.bindHandlers('_handleChange')
   }
   render() {
     return (
@@ -54,13 +54,14 @@ class QuoteInputLayout extends BaseComponent {
                     label={quote.label}
                     ref={quote.ref}
                     value={this.state[quote.ref]}
-                    onChange={(event) => this.handleChange(quote.ref, event)}
+                    onChange={(event) => this._handleChange(quote.ref, event)}
                   />
+                {/*OK*/}
         </div>
       )
     })
   }
-  handleChange(name, value) {
+  _handleChange(name, value) {
     this.setState({...this.state, [name]: value})
     // update LocalState since we're getting the value in actions.buttons
     // then calling the insert method

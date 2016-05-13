@@ -20,6 +20,16 @@
     width: 40px;
   }
 
+  thead > tr > th:nth-child(6) {
+    width: 90px;
+  }
+
+}
+
+._add_button {
+  display: flex;
+  justify-content: flex-end;
+  flex: 1 1 auto;
 }
 
 ._input__wrapper {

@@ -6,20 +6,6 @@ import style from './quotes.scss'
 // QUOTE_TABLE
 // QUOTE_LINE_ITEM (Aka one product, and we'll update the quantity)
 
-// const UserModel = {
-//   name: {type: String},
-//   twitter: {type: String},
-//   birthdate: {type: Date},
-//   cats: {type: Number},
-//   dogs: {type: Number},
-//   active: {type: Boolean}
-// }
-
-// const users = [
-//   {name: 'Javi Jimenez', twitter: '@soyjavi', birthdate: new Date(1980, 3, 11), cats: 1},
-//   {name: 'Javi Velasco', twitter: '@javivelasco', birthdate: new Date(1987, 1, 1), dogs: 1, active: true}
-// ]
-
 // const ProductModel = {
 //   item:         {type: String},
 //   manufacturer: {type: String},
@@ -65,18 +51,20 @@ class QuoteTable extends BaseComponent {
     super()
     this.state = {
       selected: [],
-      source: products
+      source: products,
+      // TODO: add a checkbox to make fields editable
+      editable: false
     }
-    this.bindHandlers('handleChange', 'handleSelect')
+    this.bindHandlers('_handleChange', '_handleSelect')
   }
 
-  handleChange(row, key, value) {
+  _handleChange(row, key, value) {
     const source = this.state.source
     source[row][key] = value
     this.setState({source})
   }
 
-  handleSelect(selected) {
+  _handleSelect(selected) {
     this.setState({selected})
   }
 
@@ -85,8 +73,8 @@ class QuoteTable extends BaseComponent {
       <Table
         model={ProductModel}
         className={style._quote_table}
-        onChange={this.handleChange}
-        onSelect={this.handleSelect}
+        onChange={this._handleChange}
+        onSelect={this._handleSelect}
         selectable
         selected={this.state.selected}
         source={this.state.source}

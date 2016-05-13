@@ -10,7 +10,7 @@ const ListWrapper = () => (
       <input placeholder="Search..." type="text" className={style._product_search} />
     </div>
     <List>
-      <ListSubHeader caption='Products' />
+      <ListSubHeader caption='All Products' />
       <ProductList />
     </List>
   </div>

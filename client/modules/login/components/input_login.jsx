@@ -1,19 +1,49 @@
 import React  from 'react'
-import styles from './input_login.mss'
+import styles from './input_login.scss'
 import Input  from 'react-toolbox/lib/input'
 import { BaseComponent } from '/client/modules/react_utils'
 
 export class InputLogin extends BaseComponent {
   constructor () {
     super()
+    this.state = {
+      username: '',
+      password: ''
+    }
     this.bindHandlers(
       'handleLogout',
       'handleChange',
-      'handlePass',
       'handleCreate',
       'handleLogin',
       'handleKeyPress'
     )
+  }
+
+  getFields() {
+    return [
+      { label: "Username", icon: "person", type: "text",     ref: "username" },
+      { label: "Password", icon: "lock",   type: "password", ref: "password"  }
+    ]
+  }
+
+  renderFields() {
+    return this.getFields().map((input) => {
+      return  (
+        <div className={styles._input__wrapper} key={input.ref}>
+          <Input
+            required
+            type={input.type}
+            maxLength={24}
+            label={input.label}
+            icon={input.icon}
+            ref={input.ref}
+            value={this.state[input.ref]}
+            onChange={(event) => this.handleChange(input.ref, event)}
+            onKeyPress={this.handleKeyPress}
+          />
+        </div>
+      )
+    })
   }
 
   render() {
@@ -27,27 +57,8 @@ export class InputLogin extends BaseComponent {
 
         </div>
         <div className={styles.loginCard}>
-          <Input
-            maxLength={16 }
-            required
-            type='text'
-            onChange={this.handleChange}
-            value={inputVal}
-            icon='person'
-            label='Username'
-            ref='username'
-          />
-          <Input
-            maxLength={16 }
-            required
-            onChange={this.handlePass}
-            onKeyPress={this.handleKeyPress}
-            value={passVal}
-            type='password'
-            icon='lock'
-            label='Password'
-            ref='password'
-          />
+          {/* Render the input fields */}
+          {this.renderFields()}
           <div
             className={styles.loginButton}
             onClick={this.handleLogin} >
@@ -64,17 +75,8 @@ export class InputLogin extends BaseComponent {
     )
   }
 
-  handleChange(event) {
-    if (event && event.preventDefault) {
-      event.preventDefault();
-    }
-    console.log(`from handler: ${event}`)
-
-    let thingTyped = event
-
-    const { inputValue } = this.props
-
-    inputValue(thingTyped)
+  handleChange(name, value) {
+    this.setState({...this.state, [name]: value})
   }
 
   handleLogin() {
@@ -96,17 +98,6 @@ export class InputLogin extends BaseComponent {
   handleCreate() {
     const { goCreate } = this.props
     goCreate()
-  }
-
-  handlePass(event) {
-    if (event && event.preventDefault) {
-      event.preventDefault();
-    }
-    let typeType = event
-
-    const { passValue } = this.props
-
-    passValue(typeType)
   }
 
   handleKeyPress(e) {

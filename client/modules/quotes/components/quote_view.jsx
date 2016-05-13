@@ -56,15 +56,15 @@ class QuoteView extends BaseComponent {
                     </AppBar>
                     <div style={{ flex: 1, overflowY: 'auto', padding: '1.8rem', backgroundColor: 'white'}}>
                         <h3>IM QUOTE: {quoteId}</h3>
-                        <Checkbox label='Pin drawer' checked={this.state.drawerPinned} onChange={this.toggleDrawerPinned} />
-                        <Checkbox label='Add a product' checked={this.state.sidebarPinned} onChange={this.toggleSidebar} />
+                        <Checkbox label={`Pin 'Section' view to 'open'`} checked={this.state.drawerPinned} onChange={this.toggleDrawerPinned} />
+                        <Checkbox label='Add a Product' checked={this.state.sidebarPinned} onChange={this.toggleSidebar} />
                         {/* Render table */}
                         <QuoteTable />
 
                     </div>
                 </Panel>
                 <Sidebar pinned={ this.state.sidebarPinned } width={ 7 } scrollY={ true }>
-                    <div><IconButton icon='close' onClick={ this.toggleSidebar }/></div>
+                    {/*<div><IconButton icon='close' onClick={ this.toggleSidebar }/></div>*/}
                     <div style={{ flex: 1 }}>
                         <ListWrapper />
                     </div>

@@ -1,17 +1,20 @@
 import React from 'react'
 import { IconMenu, MenuItem, MenuDivider } from 'react-toolbox/lib/menu'
-import Avatar from 'react-toolbox/lib/avatar';
+import Avatar from 'react-toolbox/lib/avatar'
 import styles from './main_layout.scss'
 
 class Menu extends React.Component {
-
+  constructor() {
+    super()
+  }
   render() {
+    const { userName } = this.props
     return (
       <div className={styles.userMenu}>
         <span style={{marginLeft: 'auto', marginRight: 'auto'}}>
-          <h1><a href="/" style={{color: "#0A477C"}}>Arrow</a></h1>
+          <h1><a href="/" style={{color: "#0A477C"}}>⟑<small>rrow</small></a></h1>
         </span>
-        <span>{Meteor.userId()}</span>
+        <span>{userName}</span>
         <Avatar title={Meteor.userId()} image="https://placeimg.com/80/80/animals"/>
         <IconMenu icon='arrow_drop_down' position='top-right' menuRipple>
             <MenuItem icon='border_all' caption='Quotes' onClick={this._goQuotes.bind(this)} />

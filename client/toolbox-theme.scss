@@ -8,9 +8,10 @@
 
 $color-primary: #6D94C7 !default;
 $color-primary-dark: #6386B4 !default;
+$color-text: rgba(250, 250, 250, 0.78);
 
 $input-text-label-color: rgba(255, 255, 255, 0.45);
-$color-text: rgba(250, 250, 250, 0.78);
+
 
 $drawer-background-color: #585D6C;
 $menu-background-color: #585D6C;
@@ -27,6 +28,8 @@ $list-item-min-height-legend: 50px;
 $navigation-drawer-desktop-width: 44rem;
 $navigation-drawer-mobile-width: 40rem;
 
+$button-neutral-color-contrast: #DCDCDC;
+
 // CLASS OVERRIDES
 
 .input {
@@ -38,4 +41,14 @@ $navigation-drawer-mobile-width: 40rem;
 }
 .pinned {
   width: 44rem;
+}
+
+
+// FIXME: Couldn't get this overridden so I had to edit the library
+.root > .navDrawer > .drawerContent {
+  border-right: 0px;
+}
+
+td {
+  font-size: 1.5rem;
 }

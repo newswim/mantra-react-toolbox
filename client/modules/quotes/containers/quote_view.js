@@ -14,6 +14,7 @@ export const composer = ({
   if (Meteor.subscribe('quotes.one', quoteId).ready) {
     console.log(quoteId)
     const quote = Quotes.findOne({_id: quoteId})
+    console.log(quote)
 
     onData(null, { })
   }

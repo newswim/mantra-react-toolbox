@@ -172,3 +172,47 @@ should suffice for now.
 Review these packages for patterns:
 - https://github.com/meteor/validated-method
 - https://github.com/meteor/validation-error
+
+
+> May 5th
+
+It's time to tackle some more complex data models.
+
+I'll try to state the requirements very plainly:
+
+Given a new Quote:
+- Add a new Section to a Quote
+- Add a Product to a Section
+- Update/Remove Product (including 'quantity' field) within Sections
+- Update fields within Quote
+  - some fields will be required at the time of creation, others we'll add later
+  - see 'Edit Defaults' widget in the mock-up
+- Dynamically update Quote information based on provided Product data
+  - 'Summary' = 'Total Job Materials Cost', 'Total Job Labor', etc.
+
+
+One way of stating this is that a Quote is made up of Sections which contain Products.
+
+I'm heavily referencing this article: http://guide.meteor.com/collections.html
+
+> Monday, May 9th
+
+Simple Schema. It's simple, right?
+
+excerpt from docs:
+
+#### defaultValue
+
+Set this to any value that you want to be used as the default when an object does not include this field or has this field set to undefined. This value will be injected into the object by a call to mySimpleSchema.clean(). Default values are set only when cleaning non-modifier objects.
+
+Note the following points of confusion:
+
+- A default value itself is not cleaned. So, for example, if your default value is "", it will not be removed by the removeEmptyStrings operation in the cleaning.
+- A default value is always added if there isn't a value set. Even if the property is a child of an optional object, and the optional object is not present, the object will be added and its property will be set to the default value. Effectively, this means that if you provide a default value for one property of an object, you must provide a default value for all properties of that object or risk confusing validation errors.
+If you need more control, use the autoValue option instead.
+
+Also see [Extracting SimpleSchemas](https://github.com/aldeed/meteor-simple-schema/#extracting-simpleschemas)
+
+> May 11th
+
+I'm going to try and refactor the codebase into more general components, ie. instead of having modules like 'quotes', 'products_panel', 'new_product' -- I'm thinking I should make 'buttons' and 'inputs' modules, then pass them specific props (and probably use the `classnames` package) to from increasing more specific containers.
