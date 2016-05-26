@@ -21,81 +21,81 @@ active
 */
 
 export default function () {
-  Meteor.methods({
-    'product.create'(newProduct) {
-      check(newProduct, Object)
+    Meteor.methods({
+        'product.create'(newProduct) {
+            check(newProduct, Object)
 
-      const {
-        productName,
-        mfrName,
-        partNumber,
-        description,
-        productType,
-        vendorName,
-        vendorPartNumber,
-        perFoot,
-        listPrice,
-        purchasePrice,
-        laborUnit,
-        website,
-        dateLastEdited,
-        active
-      } = newProduct
+            const {
+              productName,
+              mfrName,
+              partNumber,
+              description,
+              productType,
+              vendorName,
+              vendorPartNumber,
+              perFoot,
+              listPrice,
+              purchasePrice,
+              laborUnit,
+              website,
+              dateLastEdited,
+              active
+            } = newProduct
 
-      console.log(productName)
+            console.log(productName)
 
-      check(productName, String)
-      check(mfrName, String)
-      check(partNumber, String)
-      check(description, String)
-      check(productType, String)
-      check(vendorName, String)
-      check(vendorPartNumber, String)
-      check(perFoot, String)
-      check(listPrice, String)
-      check(purchasePrice, String)
-      check(laborUnit, String)
-      check(website, String)
-      check(dateLastEdited, String)
-      check(active, String)
+            check(productName, String)
+            check(mfrName, String)
+            check(partNumber, String)
+            check(description, String)
+            check(productType, String)
+            check(vendorName, String)
+            check(vendorPartNumber, String)
+            check(perFoot, String)
+            check(listPrice, String)
+            check(purchasePrice, String)
+            check(laborUnit, String)
+            check(website, String)
+            check(dateLastEdited, String)
+            check(active, String)
 
-      const createdAt = new Date()
+            const createdAt = new Date()
 
-      check(createdAt, Date)
+            check(createdAt, Date)
 
-      const product = {
-        createdAt,
-        productName,
-        mfrName,
-        partNumber,
-        description,
-        productType,
-        vendorName,
-        vendorPartNumber,
-        perFoot,
-        listPrice,
-        purchasePrice,
-        laborUnit,
-        website,
-        dateLastEdited,
-        active
-      }
+            const product = {
+                createdAt,
+                productName,
+                mfrName,
+                partNumber,
+                description,
+                productType,
+                vendorName,
+                vendorPartNumber,
+                perFoot,
+                listPrice,
+                purchasePrice,
+                laborUnit,
+                website,
+                dateLastEdited,
+                active
+            }
 
-      check(product, Object)
+            check(product, Object)
 
-      const insertProduct = Products.insert(product)
+            const insertProduct = Products.insert(product)
 
-      console.log(`Added ${productName} to Products`)
+            console.log(`Added ${productName} to Products`)
 
-      return insertProduct
-    },
+            return insertProduct
+        },
 
-    'product.delete'(id) {
-      check(id, String)
-      const deleteProduct = Products.remove({ "_id": id })
+        'product.delete'(id) {
+            check(id, String)
+            const deleteProduct = Products.remove({ '_id': id })
 
-      console.log(`Removed product: ${id}`)
-      return deleteProduct
-    }
-  })
+            console.log(`Removed product: ${id}`)
+            return deleteProduct
+        }
+    })
 }

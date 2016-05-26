@@ -8,6 +8,7 @@ import loginModule from './modules/login';
 import quotesModule from './modules/quotes';
 import products_panelModule from './modules/products_panel';
 import new_productModule from './modules/new_product';
+import sectionModule from './modules/section';
 
 
 // init context
@@ -21,4 +22,5 @@ app.loadModule(loginModule);
 app.loadModule(quotesModule);
 app.loadModule(new_productModule);
 app.loadModule(products_panelModule);
+app.loadModule(sectionModule);
 app.init();

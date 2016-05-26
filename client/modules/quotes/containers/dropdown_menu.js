@@ -1,19 +1,19 @@
-import {useDeps, composeAll, composeWithTracker, compose} from 'mantra-core';
+import {useDeps, composeAll, composeWithTracker} from 'mantra-core'
 
-import DropdownMenu from '../components/quote_dropdown_menu.jsx';
+import DropdownMenu from '../components/quote_dropdown_menu.jsx'
 
 export const composer = ({context}, onData) => {
-  const {Meteor, Collections} = context();
+    // const {Meteor, Collections} = context()
 
-  onData(null, {});
-};
+    onData(null, {})
+}
 
 export const depsMapper = (context, actions) => ({
-  context: () => context,
-  updateLocalState: actions.dropdown_menu.updateLocalState
-});
+    context: () => context,
+    updateLocalState: actions.dropdown_menu.updateLocalState
+})
 
 export default composeAll(
-  composeWithTracker(composer),
-  useDeps(depsMapper)
-)(DropdownMenu);
+    composeWithTracker(composer),
+    useDeps(depsMapper)
+)(DropdownMenu)
